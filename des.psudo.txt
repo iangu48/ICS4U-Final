@@ -1,0 +1,5 @@
+group into 2 characters
+pad with fisst 4 character of password
+reverse sequence
+shift over by characters in password
+encode to base64
