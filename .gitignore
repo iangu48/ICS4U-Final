@@ -27,3 +27,5 @@ thumbs.db
 #IntelliJ IDEA
 .idea/*.xml
 .idea/*.iml
+misc.xml
+workspace.xml
