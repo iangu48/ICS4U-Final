@@ -1,0 +1,273 @@
+   import java.awt.*;
+   import java.awt.event.*;
+   import javax.swing.*;
+   import java.util.*;
+   import java.lang.Object.*;
+	
+    public class Prototype
+   {
+      static JFrame window;
+      static JFrame gameWindow;
+      static String[] resourceNames = {"Wood", "Food", "Iron"};
+      static int[] resources = new int [3];
+      static Messages message = new Messages();
+      static Color backgroundColor = Color.BLACK;
+      static Color textColor = Color.WHITE;
+      static Location center = new Location (20, 20);
+      static Location right = new Location (470, 20);
+      final static int TEXTSPACING = 25;
+      final static int LINESPACING = 15;
+   
+       private static class StartScreenDisplay extends JPanel
+      {
+          public void paintComponent(Graphics g) 
+         {
+            super.paintComponent(g);
+            Graphics2D g2 = (Graphics2D) g;
+            g2.setColor(Color.black);
+            g2.fillRect(0,0, 480, 640);
+            g2.setColor(Color.white);
+            g.drawString("Welcome to the parody of the game \"A dark room\"", 15, 20);
+            g.drawString("Made by: Shawn Wang, Michael Chang, Raghav Srinivasan, Tong Li Han, Ian Gu", 15, 40);
+         }
+      
+      }
+   
+       private static class Display extends JPanel
+      {
+      
+          public void paintComponent(Graphics g)
+         {
+            super.paintComponent(g);
+            Graphics2D g2 = (Graphics2D) g;
+            paintBackground(g2);
+            paintMessages(g, center);
+            paintResources(g, right);
+         }
+      	
+          public void paintBackground(Graphics2D g)
+         {
+            int width = getWidth();
+            int height = getHeight();
+            g.setColor(backgroundColor);
+            g.fillRect(0, 0, width, height);
+         }
+      	
+          public void paintMessages(Graphics g, Location l)
+         {	
+            g.setColor(textColor);
+            String[] text = new String[1];
+            int xPosition = l.getX();
+            int yPosition = l.getY();
+            try
+            {
+               for (int i = 0; (text = message.getText(i)) != null; i++)
+               {
+                  for (int j = 0; j < text.length && text[j] != null; j++)
+                  {
+                     g.drawString(text[j], xPosition, yPosition);
+                     yPosition += LINESPACING;
+                  }
+                  yPosition += TEXTSPACING;
+               }
+            }
+                catch (NullPointerException e)
+               {
+               }
+         }
+         
+          public void paintResources(Graphics g, Location l)
+         {	
+            g.setColor(textColor);
+            int xPosition = l.getX();
+            int yPosition = l.getY();
+            for (int i = 0; i < resources.length; i++)
+            {
+               g.drawString(resourceNames[i] + ": " + resources[i], xPosition, yPosition);
+               yPosition += LINESPACING;
+            }
+         }
+      } 
+      
+       private static class Location
+      {
+         int x;
+         int y;
+      	
+          public Location(int x, int y)
+         {
+            this.x = x;
+            this.y = y;
+         }
+      	
+          public int getX ()
+         {
+            return x;
+         }
+      	
+          public int getY ()
+         {
+            return y;
+         }
+      }
+   	
+       private static class ButtonHandler implements ActionListener {
+       
+          public void actionPerformed(ActionEvent e) {
+            String action = e.getActionCommand();
+            if (action.equals("Start game"))
+               startGame();
+               //System.exit(0);
+            else if (action.equals("Wood"))
+            {
+               String[] text = new String[1];
+               text[0] = "Received 10 wood.";
+               message.addText(text);
+               resources[0] += 10;
+            }
+            else if (action.equals("Food"))
+            {
+               String[] text = new String[1];
+               text[0] = "Received 10 food.";
+               message.addText(text);
+               resources[1] += 10;    
+            }
+            else if (action.equals("Iron"))
+            {
+               String[] text = new String[1];
+               text[0] = "Received 10 iron.";
+               message.addText(text);
+               resources[2] += 10;    
+            } 
+            else if (action.equals("Expedition"))
+            {
+               String[] text = new String[1];
+               text[0] = "Started expedition";
+               message.addText(text); 
+            }
+            gameWindow.repaint();
+         }
+         
+      }
+       public static void startGame()
+      {
+         window.setVisible(false);
+         window.dispose();
+      	 
+         MouseFinder m = new MouseFinder();
+         gameWindow = new JFrame ("La Sala");
+         gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         gameWindow.setSize(1000, 500);
+         gameWindow.setLocation(100, 200);
+         gameWindow.addMouseListener(m);
+      	
+         JPanel mainDisplay = new JPanel();
+         mainDisplay.setLayout (new BoxLayout(mainDisplay, BoxLayout.LINE_AXIS));
+      	
+         Display buttonScreen = new Display();
+         Dimension buttonScreenDimensions = new Dimension (250, 500);
+         buttonScreen.setMinimumSize(buttonScreenDimensions);
+         buttonScreen.setMaximumSize(buttonScreenDimensions);
+         buttonScreen.setPreferredSize(buttonScreenDimensions);
+         
+         ButtonHandler handler = new ButtonHandler(); 
+         JButton woodButton = new JButton("Wood");
+         woodButton.addActionListener(handler);
+         JButton foodButton = new JButton("Food");
+         foodButton.addActionListener(handler);
+         JButton ironButton = new JButton("Iron");
+         ironButton.addActionListener(handler);
+         JButton expeditionButton = new JButton("Expedition");
+         expeditionButton.addActionListener(handler);
+         
+         buttonScreen.setLayout(new GridLayout(5,5));
+         buttonScreen.add(woodButton);
+         buttonScreen.add(foodButton);
+         buttonScreen.add(ironButton);
+         buttonScreen.add(expeditionButton);
+         
+         Display storyScreen = new Display();
+         Dimension storyScreenDimensions = new Dimension (5750, 500);
+         storyScreen.setSize(storyScreenDimensions);
+         storyScreen.setMinimumSize(storyScreenDimensions);
+         storyScreen.setMaximumSize(storyScreenDimensions);
+         storyScreen.setPreferredSize(storyScreenDimensions);
+         
+         mainDisplay.add(buttonScreen);
+         mainDisplay.add(storyScreen);
+      	
+         gameWindow.setContentPane(mainDisplay);
+         gameWindow.repaint();
+         gameWindow.setVisible(true);
+      }
+   
+       public static void main(String[] args) 
+      {
+         window = new JFrame ("Game");
+         window.setContentPane(new StartScreenDisplay());		
+         window.setSize(480, 640);
+         window.setLocation(400,200);
+         window.getContentPane().setLayout(new BorderLayout());
+         JButton startButton = new JButton("Start game");
+         ButtonHandler handler = new ButtonHandler();
+         startButton.addActionListener(handler);
+         window.add(startButton, BorderLayout.PAGE_END);
+         window.setVisible(true);
+      }
+      
+       private static class Messages
+      {
+         private static int MAXTEXTS = 5;
+         private String[][] texts = new String[MAXTEXTS][];
+      	
+          public Messages ()
+         {
+         
+         }
+         
+          public void addText(String[] newText)
+         {
+            for (int i = MAXTEXTS - 1; i > 0; i--)
+               texts[i] = texts[i - 1];
+            texts[0] = newText;
+         	
+         }
+      	
+          public String[] getText (int i)
+         {
+            if (i >= 0 && i < MAXTEXTS)
+               return texts[i];
+            return null;
+         }
+         
+      }
+       private static class MouseFinder implements MouseListener
+      {
+          public void mousePressed(MouseEvent e)
+         {
+            //System.out.println ("Pressed: " + e.getX() + " " + e.getY());
+         }
+      
+          public void mouseReleased(MouseEvent e)
+         {
+            //System.out.println ("Released: " + e.getX() + " " + e.getY());
+         }
+      
+          public void mouseClicked(MouseEvent e)
+         {
+            //System.out.println ("Clicked: " + e.getX() + " " + e.getY());
+         }
+      
+          public void mouseEntered(MouseEvent e)
+         {
+            //System.out.println ("Entered: " + e.getX() + " " + e.getY());
+         }
+      
+          public void mouseExited(MouseEvent e)
+         {
+            //System.out.println ("Exited: " + e.getX() + " " + e.getY());
+         }
+      
+      }
+          
+   }
