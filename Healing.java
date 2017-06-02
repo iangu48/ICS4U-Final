@@ -3,17 +3,10 @@ public class Healing extends Item{
 
 	private int healed;
 	
-	public Healing(int amount, int healed) {
-		super(amount);
+	public Healing(int amount, int id, int healed) {
+		super(amount, id);
 		this.setHealed(healed);
 		// TODO Auto-generated constructor stub
-	}
-	
-	public boolean equals (Healing other) {
-		if (this.healed == other.healed)
-			return true;
-		else
-			return false;
 	}
 
 	public void setHealed(int healed) {

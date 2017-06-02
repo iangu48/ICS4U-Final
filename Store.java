@@ -3,17 +3,10 @@ public class Store extends Item{
 
 	private String name;
 	
-	public Store(int amount, String name) {
-		super(amount);
+	public Store(int amount, int id, String name) {
+		super(amount, id);
 		this.setName(name);
 		// TODO Auto-generated constructor stub
-	}
-	
-	public boolean equals(Store other) {
-		if ((this.name).equals(other.name))
-			return true;
-		else
-			return false;
 	}
 
 	public void setName(String name) {
