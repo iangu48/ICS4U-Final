@@ -1,0 +1,167 @@
+    public class Cipher
+   {
+      private static final int ENCRYPTIONREPETITION = 3;
+      private static final int INTEGERKEY1 = 5243; 
+      private static final int INTEGERKEY2 = 7;
+      private static final String BOOLEANKEY = "&|";
+      private static final int NUMBOOLEANS = BOOLEANKEY.length() + 1;
+   	
+       public static String encrypt (int num)
+      {
+         return "" + recursivelyEncryptNumber (num, ENCRYPTIONREPETITION);
+      }
+   	
+       private static int recursivelyEncryptNumber (int num, int times)
+      {
+         String text = "" + num;
+         String encryptedText = "";
+         
+         if (text.length() % 2 == 0)
+            encryptedText += text.substring(text.length() / 2) + text.substring(0, text.length() / 2);
+         else
+            encryptedText += text.substring(text.length() / 2 + 1) + text.charAt(text.length() / 2) + text.substring(0, text.length() / 2);
+         
+         int encryptedNumber = Integer.parseInt(encryptedText);
+         encryptedNumber += INTEGERKEY1;
+         encryptedNumber *= INTEGERKEY2;
+      	
+         if (times <= 1)
+            return encryptedNumber;
+         else
+            return recursivelyEncryptNumber (encryptedNumber, times - 1);
+      }
+      
+       public static String encrypt (boolean b)
+      {
+         return recursivelyEncryptBoolean (b, ENCRYPTIONREPETITION);
+      }
+   	
+       private static String recursivelyEncryptBoolean (boolean b, int times)
+      {
+         int maxSolutions = (int) Math.pow(2, NUMBOOLEANS);
+         int numSolutions = 0;
+         Boolean[][] possibleEncryptions = new Boolean[maxSolutions][NUMBOOLEANS];
+         Boolean[][] solutions = new Boolean[maxSolutions][NUMBOOLEANS];
+         
+         int index = 0;
+         for (int i = maxSolutions / 2; i >= 1; i/= 2)
+         {
+            for (int j = 0; j < maxSolutions; j++)
+            {
+               possibleEncryptions [j][index] = (j / i) % 2 == 1;
+            }
+            index++;
+         }
+         
+         for (int i = 0; i < maxSolutions; i++)
+         {
+            boolean result = possibleEncryptions[i][0];
+            for (int j = 0; j < BOOLEANKEY.length(); j++)
+            {
+               if (BOOLEANKEY.charAt(j) == '&')
+               {
+                  result = result && possibleEncryptions[i][j];
+               }
+               else if (BOOLEANKEY.charAt(j) == '|')
+               {
+                  result = result || possibleEncryptions[i][j];
+               }
+            }
+            if (result == b)
+            {
+               solutions[numSolutions] = possibleEncryptions[i];
+               numSolutions ++;
+            }
+         }
+      	
+         int solution = (int) (Math.random() * numSolutions);
+      	
+         String encryptedBoolean = "";
+         if (times == 1)
+         {
+            for (int i = 0; i < NUMBOOLEANS; i++)
+            {
+               if (solutions[solution][i])
+                  encryptedBoolean += "T";
+               else
+                  encryptedBoolean += "F";
+            }
+            return encryptedBoolean;
+         }
+         else
+         {
+            for (int i = 0; i < NUMBOOLEANS; i++)
+            {
+               encryptedBoolean += recursivelyEncryptBoolean(solutions[solution][i], times - 1);
+            }
+            return encryptedBoolean;
+         }
+      }
+      
+       public static int decryptToInt(String s)
+      {
+         int encryptedNumber = Integer.parseInt(s);
+         return recursivelyDecriptToInt(encryptedNumber, ENCRYPTIONREPETITION);
+      }
+   	
+       private static int recursivelyDecriptToInt(int n, int times)
+      {
+         n /= INTEGERKEY2;
+         n -= INTEGERKEY1;
+      	
+         String encrypted = "" + n;
+         String text = "";
+         if (encrypted.length() % 2 == 0)
+            text += encrypted.substring(encrypted.length() / 2) + encrypted.substring(0, encrypted.length() / 2);
+         else
+            text += encrypted.substring(encrypted.length() / 2 + 1) + encrypted.charAt(encrypted.length() / 2) + encrypted.substring(0, encrypted.length() / 2);
+      	
+         int number = Integer.parseInt(text);
+         if (times == 1)
+            return number;
+         else
+            return recursivelyDecriptToInt(number, times - 1);
+      }
+      
+       public static boolean decryptToBoolean(String s)
+      {
+         return recursivelyDecriptToBoolean(s, ENCRYPTIONREPETITION);
+      }
+   	
+       private static boolean recursivelyDecriptToBoolean(String s, int times)
+      {
+         if (times == 1)
+         {
+            return evaluate(s);
+         }
+         else
+         {
+            String newText = "";
+            String[] segments = new String[NUMBOOLEANS];
+            int segmentLength = (int) Math.pow(NUMBOOLEANS, times - 1);
+            for (int i = 0; i < NUMBOOLEANS; i++)
+            {
+               segments[i] = s.substring(i * segmentLength, (i + 1) * segmentLength);
+               if (recursivelyDecriptToBoolean(segments[i], times - 1))
+                  newText += "T";
+               else
+                  newText += "F";
+            }
+            return evaluate(newText);
+         }
+      
+      }
+      
+       private static boolean evaluate(String s)
+      {
+         boolean result = s.charAt(0) == 'T';
+         for (int i = 0; i < BOOLEANKEY.length(); i++)
+         {
+            if (BOOLEANKEY.charAt(i) == '&')
+               result = result && (s.charAt(i + 1) == 'T');
+            else if (BOOLEANKEY.charAt(i) == '|')
+               result = result || (s.charAt(i + 1) == 'T');
+         }
+         return result;
+      }
+   }
