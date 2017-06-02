@@ -1,3 +1,5 @@
+ NO LONGER USED
+/*
 public class ItemDrop
 {
 	private Item drop;
@@ -26,3 +28,4 @@ public class ItemDrop
 	}
 	
 }
+*/
