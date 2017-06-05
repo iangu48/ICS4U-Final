@@ -16,9 +16,9 @@ public class ADuskyPath {
     public boolean encounterEnemy() //execute when player runs into a monster
     {
         Enemy monster = enemies[RandomGenerator.range(enemies.length - 1)]; //generate enemies to return to Events so they can use
-        Fight(monster);
         //Manage battle between player and enemy:
-        if (combat.battle()) {
+        Fight newFight = new Fight(user,monster);
+        if (newFight.startFight()) {
             monster.giveLoot(user);
             return true;
         }
