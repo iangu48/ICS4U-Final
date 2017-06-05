@@ -1,16 +1,25 @@
+/*
+Random Number Generator
+ */
 import java.util.Random;
 public class RandomGenerator{
-    // Hit is successful
-    public static boolean hitChance () {
-        return (randomGenerator()>=0.8);
-    }
-    // Checks if first scene is true
-    public static boolean sceneChance (double firstCondition) {
-        return (randomGenerator()<=firstCondition);
-    }
-    // Random Generator
-    public static double randomGenerator() {
+    // Base Random Generator
+    private static double randomGenerator() {
         Random random = new Random();
         return random.nextDouble();
+    }
+
+    //Returns True or False based on chance
+    //Also used for hit is Successful
+    public static boolean trueFalse (double chance) {
+        return (randomGenerator() <= chance);
+    }
+    // Returns range from 0 to max
+    public static int range(int max) {
+        return (int)randomGenerator(max);
+    }
+    // Returns range from min to max
+    public static int range (int min, int max) {
+        return (int)(randomGenerator(max)+min)
     }
 }
