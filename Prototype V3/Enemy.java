@@ -7,11 +7,10 @@ public class Enemy extends Entity
    public Enemy(int maxHealth) {
       super("Default enemy", maxHealth);
       damage = 1;
-      encounterDescription = new String[4];
+      encounterDescription = new String[3];
       encounterDescription[0] = "You encountered the default enemy.";
       encounterDescription[1] = "Debugging use. Should appear after previous line.";
       encounterDescription[2] = "Someone needs to write this text for every enemy by the way.";
-      encounterDescription[3] = "WHY ARE YOU STILL READING THIS?";
       deathDescription = new String[2];
       encounterDescription[0] = "You defeated the default enemy.";
       encounterDescription[1] = "Someone also needs to write this as well.";
