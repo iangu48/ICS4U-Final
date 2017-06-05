@@ -1,7 +1,14 @@
 /*
-Random Number Generator
- */
-import java.util.Random;
+    Random Generation
+    Class: ICS4U1
+    Author: Michael Chang
+    Date: May 31 2017
+    School: A.Y. Jackson S.S.
+    Purpose: Random Number generation and boolean based on chance double
+*/
+
+import java.util.Random; //Import random
+
 public class RandomGenerator{
     // Base Random Generator
     private static double randomGenerator() {
@@ -20,6 +27,6 @@ public class RandomGenerator{
     }
     // Returns range from min to max
     public static int range (int min, int max) {
-        return (int)(randomGenerator(max)+min)
+        return (int)(randomGenerator(max)+min);
     }
 }
