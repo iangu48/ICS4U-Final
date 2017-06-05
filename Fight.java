@@ -1,5 +1,5 @@
 private class Fight {
-    int MEATHEAL =  10; //WHAT DOES IT HEAL
+    int MEATHEAL=8; //WHAT DOES IT HEAL
     
     //Constructor for Fight
     public Fight(Enemy enemy, Player player) {
