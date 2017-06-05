@@ -18,6 +18,8 @@ public class ADuskyPath {
         Enemy monster = enemies[RandomGenerator.range(enemies.length - 1)]; //generate enemies to return to Events so they can use
         //Manage battle between player and enemy:
         Fight newFight = new Fight(user,monster);
+        description = "YOU ENCOUNTER A " + monster + ". PREPARE FOR BATTLE";
+
         if (newFight.startFight()) {
             monster.giveLoot(user);
             return true;
@@ -34,7 +36,9 @@ public class ADuskyPath {
             itemsGained[i] = items[i].generageItem(); //if no item obtained, instance is a null
         }
 
-        return (new Loot(itemsGained));
+        lootFound = new Loot(itemsGained);
+		description = "YOU FIND " + lootFound;
+		return (lootFound);
     }
     public boolean executeEvent()//supposed to trigger an encounter in the Dusky Path
     {
