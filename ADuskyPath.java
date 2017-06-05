@@ -1,15 +1,23 @@
+/*
+    Made by: Michael and Raghav
+    Date: June 05, 2017
+    Purpose: To manage all the details of player exploration, and to generate all the encounters
+             the player will face
+*/
+
 public class ADuskyPath {
-    int BASECHANCE=0.1;
-    private double lootDrop;
-    private Player user;
+    int BASECHANCE=0.1; //minimum loot chance
+    private double lootDrop; //loot chance
+    private Player user; //player who's playing
     private Enemy[] enemies; //pass in enemies from the event you are executing
     private ItemDrop[] lootOptions; //pass in the potential item drops from the event
     private String description; //description of what is actually happening
 
-    public boolean encounterEnemy()
+    public boolean encounterEnemy() //execute when player runs into a monster
     {
         Enemy monster = enemies[RandomGenerator.range(enemies.length - 1)]; //generate enemies to return to Events so they can use
         Fight(monster);
+        //Manage battle between player and enemy:
         if (combat.battle()) {
             monster.giveLoot(user);
             return true;
