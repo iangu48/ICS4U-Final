@@ -1,3 +1,11 @@
+/*
+	ICS4U
+	Ian Gu
+	6/2/2017
+	AY Jackson SS
+	
+	This class is a subclass of worker
+ */
 
 public class Hunter extends Workers{
 	

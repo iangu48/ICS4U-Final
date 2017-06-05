@@ -1,13 +1,24 @@
+/*
+	ICS4U
+	Ian Gu
+	6/2/2017
+	AY Jackson SS
+	
+	This is an abstract class which represents an item,
+	with the three subclasses of types of items
+ */
 
 public abstract class Item {
 	
 	private int amount;
 	protected int itemCode;
+	private String name;
 	
 	//Constructor, used by subclasses
-	public Item(int amount, int id) {
+	public Item(int amount, int id, String name) {
 		this.amount = amount;
 		this.itemCode = id;
+		this.name = name;
 	}
 	
 	//Accessor and mutator
@@ -21,6 +32,14 @@ public abstract class Item {
 		return itemCode;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
 	//
 	public int compareToItem(Item other) {
 		return this.amount - other.amount;
@@ -28,6 +47,10 @@ public abstract class Item {
 	
 	public boolean equals(Item other) {
 		return false;
+	}
+	
+	public String toString() {
+		return itemCode + " " + name + " x" + amount; 
 	}
 	
 	//used by retrieve method to deduct amount from implicit item
@@ -45,9 +68,9 @@ public abstract class Item {
 			if (this instanceof Store)
 				return new Store(num, this.getItemCode(), ((Store)this).getName());
 			else if (this instanceof Weapon)
-				return new Weapon(num, this.getItemCode(), ((Weapon)this).getStrength());
+				return new Weapon(num, this.getItemCode(), name, ((Weapon)this).getStrength());
 			else
-				return new Healing(num, this.getItemCode(), ((Healing)this).getHealed());
+				return new Healing(num, this.getItemCode(), name, ((Healing)this).getHealed());
 		} else
 			return null;
 	}

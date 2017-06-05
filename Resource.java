@@ -1,3 +1,13 @@
+/*
+	ICS4U
+	Ian Gu
+	6/2/2017
+	AY Jackson SS
+	
+	This class keeps the item class in an array, as a
+	way to return resources from the workers to the
+	player 
+ */
 
 public class Resource {
 	private Item[] items;
