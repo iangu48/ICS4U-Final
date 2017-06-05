@@ -4,6 +4,8 @@
 
 public abstract class Events
 {
+	final static double BASECHANCE = 0.1;
+	private double lootDrop;
 	private Player user;
 	private String description; //description of what is actually happening
 	private Enemy[] enemies; //pass in enemies from the event you are executing
@@ -28,5 +30,27 @@ public abstract class Events
 		 return (new Loot(itemsGained));
 	}
 	
-	
+	public boolean executeEvent()//supposed to trigger an encounter in the Dusky Path
+	{
+		if (RandomGenerator.trueFalse(lootDrop)) //checks if player receives loot or not
+		{
+			lootDrop = BASECHANCE //after obaining loot, loot chance reverts to base
+			user.receiveLoot(obtainLoot());
+			return true;
+		}
+		else
+		{
+			boolean living = encounterEnemy();
+			if (living)
+			{
+				lootDrop += 0.1; //after defeating enemy, loot chance goes up
+			}
+			else
+			{
+				lootDrop = BASECHANCE;//if dead, loot chance reverts to base
+			}
+			
+			return living;	
+		}
+	}	
 }
