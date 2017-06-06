@@ -12,6 +12,12 @@ public class ADuskyPath {
     private Enemy[] enemies; //pass in enemies from the event you are executing
     private ItemDrop[] lootOptions; //pass in the potential item drops from the event
     private String description; //description of what is actually happening
+    
+    public ADuskyPath(Player user)
+    {
+	this.user = user;
+    }
+	
 
     public boolean encounterEnemy() //execute when player runs into a monster
     {
