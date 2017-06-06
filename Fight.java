@@ -1,4 +1,4 @@
-private class Fight {
+public class Fight {
     int MEATHEAL=8; //WHAT DOES IT HEAL
     
     //Constructor for Fight

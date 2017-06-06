@@ -6,7 +6,7 @@
 */
 
 public class ADuskyPath {
-    int BASECHANCE=0.1; //minimum loot chance
+    double BASECHANCE=0.1; //minimum loot chance
     private double lootDrop; //loot chance
     private Player user; //player who's playing
     private Enemy[] enemies; //pass in enemies from the event you are executing
@@ -44,7 +44,7 @@ public class ADuskyPath {
         Item [] itemsGained = new Item[items.length];
         for (int i = 0; i < items.length; i++)
         {
-            itemsGained[i] = items[i].generageItem(); //if no item obtained, instance is a null
+            itemsGained[i] = items[i].generateItem(); //if no item obtained, instance is a null
         }
 
         lootFound = new Loot(itemsGained);
@@ -55,7 +55,7 @@ public class ADuskyPath {
     {
         if (RandomGenerator.trueFalse(lootDrop)) //checks if player receives loot or not
         {
-            lootDrop = BASECHANCE //after obaining loot, loot chance reverts to base
+            lootDrop = BASECHANCE; //after obaining loot, loot chance reverts to base
             user.receiveLoot(Events.obtainLoot());
             return true;
         }
