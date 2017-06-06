@@ -16,6 +16,8 @@ public class ADuskyPath {
     public ADuskyPath(Player user)
     {
 	this.user = user;
+	lootDrop = BASECHANCE;
+	description = ""
     }
 	
 
