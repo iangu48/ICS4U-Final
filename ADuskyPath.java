@@ -17,9 +17,12 @@ public class ADuskyPath {
     {
 	this.user = user;
 	lootDrop = BASECHANCE;
-	description = ""
+	description = "";
     }
-	
+    public String getDescription()
+    {
+	return description;
+    }
 
     public boolean encounterEnemy() //execute when player runs into a monster
     {
@@ -75,6 +78,7 @@ public class ADuskyPath {
     {
         while(continuing){
             executeEvent();
+	    description = "";
         }
     }
 }
