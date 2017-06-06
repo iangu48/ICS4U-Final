@@ -20,14 +20,5 @@ public class Gatherer extends Workers{
 		
 	}
 
-	public int getNumWorkers() {
-		// TODO Auto-generated method stub
-		return numWorkers;
-	}
-
-	public void setNumWorkers(int numWorkers) {
-		// TODO Auto-generated method stub
-		this.numWorkers = numWorkers;
-	}
 
 }

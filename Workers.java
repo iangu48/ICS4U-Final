@@ -12,7 +12,11 @@ public abstract class Workers {
 	
 	public abstract Resource gatherResources();
 
-	public abstract void setNumWorkers(int numWorkers);
+	public void setNumWorkers(int numWorkers) {
+		this.numWorkers = numWorkers;
+	}
 
-	public abstract int getNumWorkers();
+	public int getNumWorkers() {
+		return numWorkers;
+	}
 }

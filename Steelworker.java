@@ -23,14 +23,5 @@ public class Steelworker extends Workers{
 		return new Resource(items);
 	}
 
-	public int getNumWorkers() {
-		// TODO Auto-generated method stub
-		return numWorkers;
-	}
-
-	public void setNumWorkers(int numWorkers) {
-		// TODO Auto-generated method stub
-		this.numWorkers = numWorkers;
-	}
 
 }
