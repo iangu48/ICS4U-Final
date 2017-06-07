@@ -23,25 +23,59 @@ public class TheVillage {
 	//Constructor
 	public TheVillage(int numberOfVillagers) {
 		numVillagers = numberOfVillagers;
+		jobs[0].setNumWorkers(numVillagers);
 	}
 	
 	//Change jobs method: assigns certain number of villages to a job
-	public boolean changeJobs(int index, int number) {
-		if(index >= 0 && index <= 5) {
-			int count = 0;
-			for (int i = 0; i < 6; i++) {
-				if (i != index)
-					count += jobs[i].getNumWorkers();
-			}
-			
-			if (count + number <= numVillagers) {
-				jobs[index].setNumWorkers(number);
+	// public boolean changeJobs(int index, int number) {
+// 		if(index >= 0 && index <= 5) {
+// 			int count = 0;
+// 			for (int i = 0; i < 6; i++) {
+// 				if (i != index)
+// 					count += jobs[i].getNumWorkers();
+// 			}
+// 			
+// 			if (count + number <= numVillagers) {
+// 				jobs[index].setNumWorkers(number);
+// 				return true;
+// 			} else
+// 				return false;
+// 		}else
+// 			return false;
+// 	}
+
+	public boolean addWorker(int index)
+	{
+		if (jobs[0].getNumWorkers() > 0)
+		{
+			if (index >=0 && index <=jobs.length)
+			{
+				jobs[0].setNumWorkers(jobs[0].getNumWorkers() - 1);
+				jobs[index].setNumWorkers(jobs[index].getNumWorkers() + 1);
 				return true;
-			} else
-				return false;
-		}else
+			}
 			return false;
+		}
+		
+		return false;
 	}
+			
+	public boolean removeWorker(int index)
+	{
+		if (jobs[index].getNumWorkers() > 0)
+		{
+			if (index >=0 && index <=jobs.length)
+			{
+				jobs[0].setNumWorkers(jobs[0].getNumWorkers() + 1);
+				jobs[index].setNumWorkers(jobs[index].getNumWorkers() - 1);
+				return true;
+			}
+			return false;
+		}
+		
+		return false;
+	}
+	
 
 	//Returns the number of villagers without jobs
 	public int numWorkersAvailable() {
