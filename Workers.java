@@ -15,6 +15,16 @@ public abstract class Workers {
 	public void setNumWorkers(int numWorkers) {
 		this.numWorkers = numWorkers;
 	}
+	
+	public void addWorkers()
+	{
+		numWorkers += 1;
+	}
+	
+	public void removeWorkers()
+	{
+		numWorkers -= 1;
+	}
 
 	public int getNumWorkers() {
 		return numWorkers;
