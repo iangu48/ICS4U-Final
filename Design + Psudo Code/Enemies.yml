@@ -1,280 +1,151 @@
-- Enemy:
-            # Tier 1
-            - Snarling_Beast:
-                conditions:
-                    distance: <=10
-                    environment: forest
-                damage: 1
-                attackDelay: 1
-                health: 5
-                loot:
-                    fur:
-                        min: 1
-                        max: 3
-                        chance: 1
-                    meat:
-                        min: 1
-                        max: 3
-                        chance: 1
-                    teeth: 
-                        min: 1
-                        max: 3
-                        chance: 0.8
-            - A_Gaunt_Man:
-                conditions:
-                    distance: <=10
-                    environment: barrens
-                damage: 2
-                attackDelay: 2
-                health: 6
-                loot:
-                    cloth:
-                        min: 1
-                        max: 3
-                        chance: 0.8
-                    teeth:
-                        min: 1
-                        max: 2
-                        chane: 0.8
-                    leather:    
-                        min: 1
-                        max: 2
-                        chance: 0.5
-            - Strange_Bird:
-                conditions:
-                    distance: <=10
-                    environment: field
-                damage: 3
-                attackDelay: 2
-                health: 4
-                loot:
-                    scales:
-                        min: 1
-                        max: 3
-                        chance: 0.8
-                    teeth:
-                        min:1
-                        max: 2
-                        chance: 0.5
-                    meat:
-                        min: 1
-                        max: 3
-                        chance: 0.8
-            
-            # Tier 2
-            - Shivering_Man:
-                conditions:
-                    distance: 10 <= 20
-                    environment: barrens
-                damage: 5
-                attackDelay: 1
-                health: 20
-                loot:
-                    cloth:
-                        min: 1
-                        max: 1
-                        chance: 0.2
-                    teeth:
-                        min: 1
-                        max: 2
-                        chance: 0.8
-                    leather:
-                        min: 1
-                        max: 1
-                        chance: 0.2
-            - Man_Eater:
-                conditions:
-                    distance: 10 <= 20
-                    environment: forest
-                damage: 3
-                attackDelay: 1
-                health: 25
-                loot:
-                    fur:
-                        min: 5
-                        max: 10
-                        chance: 1
-                    meat:
-                        min: 5
-                        max: 10
-                        chance: 1
-                    teeth:
-                        min: 5
-                        max: 10
-                        chance: 0.8
-            - Scavenger:
-                conditions:
-                    distance: 10 <= 20
-                    environment: barrens
-                distance: 4
-                attackDelay: 2
-                health: 30
-                loot:
-                    cloth:
-                        min: 5
-                        max: 10
-                        chance: 0.8
-                    leather:
-                        min: 5
-                        max: 10
-                        chance: 0.8
-                    iron:
-                        min: 1
-                        max: 5
-                        chance: 0.5
-            - Huge_Lizard:
-                conditions:
-                    distance: 10 <= 20
-                    environment: field
-                damage: 5
-                attackDelay: 2
-                health: 20
-                loot:
-                    scales:
-                        min: 5
-                        max: 10
-                        chance: 0.8
-                    teeth:
-                        min: 5
-                        max: 10
-                        chance: 0.5
-                    meat:
-                        min: 5
-                        max: 10
-                        chance: 0.8
-            
-            # Environment
-            - beast:
-                damage: 1
-                attackDelay: 1
-                health: 5
-                loot:
-                    fur:
-                        min: 1
-                        max: 10
-                        chance: 1
-                    teeth:
-                        min: 1
-                        max: 5
-                        chance: 0.8
-            - beast2:
-                damage: 3
-                hit: 0.8
-                attackDelay: 2
-                health: 10
-                loot:
-                    fur:
-                        min: 1
-                        max: 3
-                        chance: 1
-                    teeth:
-                        min: 1
-                        max: 3
-                        chance: 1
-            - beast3:
-                damage: 4
-                attackDelay: 1
-                health: 25
-                loot:
-                    teeth:
-                        min: 1
-                        max: 5
-                        chance: 1
-                    fur:
-                        min: 5
-                        max: 10
-                        chance: 1
-            - lizard:
-                damage: 3
-                attackDelay: 2
-                health: 6
-                loot:
-                    scales:
-                        min: 1
-                        max: 3
-                        chance: 1
-                    teeth:
-                        min: 1
-                        max: 2
-                        chance: 0.8
-            - lizard2:
-                damage: 4
-                attackDelay: 0.8
-                health: 10
-                loot:
-                    scales:
-                        min: 1
-                        max: 3
-                        chance: 1
-                    teeth:
-                        min: 1
-                        max: 3
-                        chance: 1
-            - thug:
-                damage: 4
-                attackDelay: 2
-                health: 30
-                loot:
-                    cloth:
-                        min: 5
-                        max: 10
-                        chance: 0.8
-                    leather:
-                        min: 5
-                        max: 10
-                        chance: 0.8
-                    cured_meat:
-                        min: 1
-                        max: 5
-                        chance: 0.5
-            - vigilante:
-                damage: 6
-                attackDelay: 2
-                health: 30
-                loot:
-                    cured_meat:
-                        min: 5
-                        max: 10
-                        chance: 1
-                    leather:
-                        min: 5
-                        max: 10
-                        chance: 0.8
-                    steel_swird:
-                        min: 1
-                        max: 1
-                        chance: 0.8
-            - squatter:
-                damage: 3
-                attackDelay: 2
-                health: 10
-                loot:
-                    cured_meat:
-                        min: 1
-                        max: 10
-                        chance: 0.8
-                    leather:
-                        min: 1
-                        max: 10
-                        chance: 0.2
-                    cloth:
-                        min: 1
-                        max: 10
-                        chance: 0.5
-            - beastly_matriarch:
-                damage: 4
-                attackDelay: 2
-                health: 10
-                loot:
-                    teeth:
-                        min: 5
-                        max: 10
-                        chance: 1
-                    scales:
-                        min :5
-                        max: 10
-                        chance: 0.8
-                    cloth:
-                        min: 5
-                        max: 10
-                        chance: 0.5
+# Tier 1
+- Snarling_Beast:
+    description: "a snarling beast leaps out of the underbrush"
+    conditions:
+        distance: <=10
+        environment: forest
+    damage: 1
+    attackDelay: 1
+    health: 5
+    loot:
+        fur:
+            min: 1
+            max: 3
+            chance: 1
+        meat:
+            min: 1
+            max: 3
+            chance: 1
+        teeth: 
+            min: 1
+            max: 3
+            chance: 0.8
+- A_Gaunt_Man:
+    description: "a gaunt man approaches, a crazed look in his eye"
+    conditions:
+        distance: <=10
+        environment: barrens
+    damage: 2
+    attackDelay: 2
+    health: 6
+    loot:
+        cloth:
+            min: 1
+            max: 3
+            chance: 0.8
+        teeth:
+            min: 1
+            max: 2
+            chance: 0.8
+            leather:    
+                min: 1
+                max: 2
+                chance: 0.5
+- Strange_Bird:
+    description: "a strange looking bird speeds across the plains"
+    conditions:
+        distance: <=10
+        environment: field
+    damage: 3
+    attackDelay: 2
+    health: 4
+    loot:
+        scales:
+            min: 1
+            max: 3
+            chance: 0.8
+        teeth:
+            min:1
+            max: 2
+            chance: 0.5
+        meat:
+            min: 1
+            max: 3
+            chance: 0.8            
+#NEW TIER#
+# Tier 2
+- Shivering_Man:
+    description: "a shivering man approaches and attacks with surprising strength"
+    conditions:
+        distance: 10 <= 20
+        environment: barrens
+        damage: 5
+        attackDelay: 1
+        health: 20
+        loot:
+            cloth:
+                min: 1
+                max: 1
+                chance: 0.2
+            teeth:
+                min: 1
+                max: 2
+                chance: 0.8
+            leather:
+                min: 1
+                max: 1
+                chance: 0.2
+- Man_Eater:
+    description: "a large creature attacks, claws freshly bloodied"
+    conditions:
+    distance: 10 <= 20
+    environment: forest
+    damage: 3
+    attackDelay: 1
+    health: 25
+    loot:
+        fur:
+            min: 5
+            max: 10
+            chance: 1
+        meat:
+            min: 5
+            max: 10
+            chance: 1
+        teeth:
+            min: 5
+            max: 10
+            chance: 0.8
+- Scavenger:
+    description: "a scavenger draws close, hoping for an easy score"
+    conditions:
+    distance: 10 <= 20
+    environment: barrens
+    distance: 4
+    attackDelay: 2
+    health: 30
+    loot:
+        cloth:
+            min: 5
+            max: 10
+            chance: 0.8
+        leather:
+            min: 5
+            max: 10
+            chance: 0.8
+        iron:
+            min: 1
+            max: 5
+            chance: 0.5
+- Huge_Lizard:
+    description: "the grass thrashes wildly as a huge lizard pushes through"
+    conditions:
+    distance: 10 <= 20
+    environment: field
+    damage: 5
+    attackDelay: 2
+    health: 20
+    loot:
+        scales:
+            min: 5
+            max: 10
+            chance: 0.8
+        teeth:
+                min: 5
+                max: 10
+                chance: 0.5
+            meat:
+                min: 5
+                max: 10
+                chance: 0.8
+#EOF

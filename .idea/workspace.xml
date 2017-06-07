@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="eadc64fd-a561-420a-9f1d-e9f9f129e1bf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Weapon.java" afterPath="$PROJECT_DIR$/Weapon.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ADuskyPath.java" afterPath="$PROJECT_DIR$/ADuskyPath.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Fight.java" afterPath="$PROJECT_DIR$/Fight.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RandomGenerator.java" afterPath="$PROJECT_DIR$/RandomGenerator.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,10 +20,15 @@
       <file leaf-file-name="RandomGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RandomGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+            <state relative-caret-position="136">
+              <caret line="15" column="10" lean-forward="false" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
               <folding>
-                <marker date="1496841637413" expanded="true" signature="1687:1688" ph="{...}" />
+                <element signature="e#512#513#0" expanded="true" />
+                <element signature="e#555#556#0" expanded="true" />
+                <element signature="e#623#624#0" expanded="true" />
+                <element signature="e#665#666#0" expanded="true" />
+                <element signature="e#745#746#0" expanded="true" />
+                <element signature="e#793#794#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -33,7 +40,7 @@
             <state relative-caret-position="357">
               <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
               <folding>
-                <element signature="e#0#466#0" expanded="true" />
+                <element signature="e#0#545#0" expanded="true" />
                 <element signature="e#440#441#0" expanded="true" />
                 <element signature="e#460#461#0" expanded="true" />
               </folding>
@@ -53,20 +60,69 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Weapon.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Weapon.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Weapon.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="493">
-              <caret line="29" column="45" lean-forward="false" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
+              <caret line="29" column="46" lean-forward="false" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
               <folding>
-                <element signature="e#0#544#0" expanded="true" />
+                <element signature="e#0#545#0" expanded="true" />
                 <element signature="e#374#375#0" expanded="true" />
                 <element signature="e#405#406#0" expanded="true" />
                 <element signature="e#434#435#0" expanded="true" />
                 <element signature="e#456#457#0" expanded="true" />
                 <element signature="e#495#496#0" expanded="true" />
-                <element signature="e#538#539#0" expanded="true" />
+                <element signature="e#539#540#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Fight.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Fight.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="26" lean-forward="false" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+              <folding>
+                <marker date="1496842036698" expanded="false" signature="395:406" ph=" { " />
+                <marker date="1496842036698" expanded="false" signature="428:434" ph=" }" />
+                <marker date="1496842036698" expanded="false" signature="465:476" ph=" { " />
+                <marker date="1496842036698" expanded="false" signature="497:503" ph=" }" />
+                <marker date="1496842036698" expanded="false" signature="533:544" ph=" { " />
+                <marker date="1496842036698" expanded="false" signature="565:571" ph=" }" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ADuskyPath.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ADuskyPath.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#2757#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemDrop.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ItemDrop.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Enemies.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Design + Psudo Code/Enemies.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -83,9 +139,11 @@
         <option value="$PROJECT_DIR$/village.pseudo.txt" />
         <option value="$PROJECT_DIR$/village.psudo.java" />
         <option value="$PROJECT_DIR$/des.psudo.txt" />
+        <option value="$PROJECT_DIR$/Weapon.java" />
+        <option value="$PROJECT_DIR$/Fight.java" />
         <option value="$PROJECT_DIR$/ADuskyPath.java" />
         <option value="$PROJECT_DIR$/RandomGenerator.java" />
-        <option value="$PROJECT_DIR$/Weapon.java" />
+        <option value="$PROJECT_DIR$/ItemDrop.java" />
       </list>
     </option>
   </component>
@@ -131,6 +189,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ICS4U-Final" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ICS4U-Final" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ICS4U-Final" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Design + Psudo Code" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -403,6 +475,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#2757#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -429,7 +504,12 @@
         <state relative-caret-position="85">
           <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
           <folding>
-            <marker date="1496841637413" expanded="true" signature="1687:1688" ph="{...}" />
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#555#556#0" expanded="true" />
+            <element signature="e#623#624#0" expanded="true" />
+            <element signature="e#665#666#0" expanded="true" />
+            <element signature="e#745#746#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -439,7 +519,7 @@
         <state relative-caret-position="357">
           <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
           <folding>
-            <element signature="e#0#466#0" expanded="true" />
+            <element signature="e#0#545#0" expanded="true" />
             <element signature="e#440#441#0" expanded="true" />
             <element signature="e#460#461#0" expanded="true" />
           </folding>
@@ -459,15 +539,15 @@
     <entry file="file://$PROJECT_DIR$/Weapon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
-          <caret line="29" column="45" lean-forward="false" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
+          <caret line="29" column="46" lean-forward="false" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
           <folding>
-            <element signature="e#0#544#0" expanded="true" />
+            <element signature="e#0#545#0" expanded="true" />
             <element signature="e#374#375#0" expanded="true" />
             <element signature="e#405#406#0" expanded="true" />
             <element signature="e#434#435#0" expanded="true" />
             <element signature="e#456#457#0" expanded="true" />
             <element signature="e#495#496#0" expanded="true" />
-            <element signature="e#538#539#0" expanded="true" />
+            <element signature="e#539#540#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -477,20 +557,59 @@
     <entry file="file://$PROJECT_DIR$/village.psudo.java" />
     <entry file="file://$PROJECT_DIR$/des.psudo.txt" />
     <entry file="file://$PROJECT_DIR$/HelloWorldGUI2.java" />
+    <entry file="file://$PROJECT_DIR$/Fight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="26" lean-forward="false" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+          <folding>
+            <marker date="1496842036698" expanded="false" signature="395:406" ph=" { " />
+            <marker date="1496842036698" expanded="false" signature="428:434" ph=" }" />
+            <marker date="1496842036698" expanded="false" signature="465:476" ph=" { " />
+            <marker date="1496842036698" expanded="false" signature="497:503" ph=" }" />
+            <marker date="1496842036698" expanded="false" signature="533:544" ph=" { " />
+            <marker date="1496842036698" expanded="false" signature="565:571" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ADuskyPath.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="361">
+          <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#2757#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RandomGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+        <state relative-caret-position="136">
+          <caret line="15" column="10" lean-forward="false" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
           <folding>
-            <marker date="1496841637413" expanded="true" signature="1687:1688" ph="{...}" />
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#555#556#0" expanded="true" />
+            <element signature="e#623#624#0" expanded="true" />
+            <element signature="e#665#666#0" expanded="true" />
+            <element signature="e#745#746#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ItemDrop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Design + Psudo Code/Enemies.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

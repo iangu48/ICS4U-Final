@@ -10,7 +10,7 @@ public class ADuskyPath {
     private double lootDrop; //loot chance
     private Player user; //player who's playing
     private Enemy[] enemies; //pass in enemies from the event you are executing
-    private ItemDrop[] lootOptions; //pass in the potential item drops from the event
+    private Enemy[] lootEnemies; //pass in the potential item drops from the event
     private String description; //description of what is actually happening
     
     public ADuskyPath(Player user)
@@ -24,9 +24,9 @@ public class ADuskyPath {
 	return description;
     }
 
-    public boolean encounterEnemy() //execute when player runs into a monster
+    private boolean encounterEnemy() //execute when player runs into a monster
     {
-        Enemy monster = enemies[RandomGenerator.range(enemies.length - 1)]; //generate enemies to return to Events so they can use
+        Enemy monster = enemies[RandomGenerator.range(enemies.length - 1)]; //generate enemies to return
         //Manage battle between player and enemy:
         Fight newFight = new Fight(user,monster);
         description = "YOU ENCOUNTER A " + monster + ". PREPARE FOR BATTLE";
@@ -38,13 +38,16 @@ public class ADuskyPath {
         return false;
     }
 
-    public Loot obtainLoot()
+    private Loot obtainLoot()
     {
         //give back a loot that is obtained from the Event
+        Enemy monster = lootEnemies[RandomGenerator.range(lootEnemies.length - 1)]; //Generate loot enemy
+        monster.giveLoot(user)
+
         Item [] itemsGained = new Item[items.length];
         for (int i = 0; i < items.length; i++)
         {
-            itemsGained[i] = items[i].generateItem(); //if no item obtained, instance is a null
+            itemsGained[i] = RandomGenerator.itemDrop(); //if no item obtained, instance is a null
         }
 
         lootFound = new Loot(itemsGained);
@@ -56,7 +59,7 @@ public class ADuskyPath {
         if (RandomGenerator.trueFalse(lootDrop)) //checks if player receives loot or not
         {
             lootDrop = BASECHANCE; //after obaining loot, loot chance reverts to base
-            user.receiveLoot(Events.obtainLoot());
+            user.receiveLoot(obtainLoot());
             return true;
         }
         else

@@ -1,10 +1,12 @@
 public class Fight {
-    int MEATHEAL=8; //WHAT DOES IT HEAL
-    
+    int MEATHEAL=8; //Heals 8
+    Player player;
+    Enemy enemy;
+
     //Constructor for Fight
     public Fight(Enemy enemy, Player player) {
-        this.enemy = enemy;
-        this.player = player;
+        this.enem = enemy;
+        this.play = player;
     }
     private boolean startFight(Enemy enemy) {
         //gui.startBattle() START BATTLE FROM GUI

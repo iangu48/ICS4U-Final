@@ -29,25 +29,4 @@ public class RandomGenerator{
 	public static int range (int min, int max) {
 		return (int)(randomGenerator()*(max)+min);
 	}
-
-	public static Item itemDrop (Item drop, int min, int max, double chance) {
-		int id = drop.getItemCode(); //Get itemcode from drop
-		String name = drop.getName(); //Get name from drop
-		Item newItem = null;
-		if (trueFalse(chance)) { //If item is dropped
-			int amount = range(min, max); // Calculate number to drop		
-			if (drop instanceof Store) { // If instance of store
-				newItem = new Store(amount, id, name); //Give store of x amount
-			}
-			else if (drop instanceof Weapon) { //If drop is store
-				int strength = ((Weapon)drop).getStrength();
-				newItem = new Weapon(amount, id, name, strength); //Give weapon of x amount
-			}
-			else if (drop instanceof Healing) { //If drop is Healing
-				int healing = ((Healing)drop).getHealed();
-				newItem = new Healing(amount, id, name, healing); //Give healing of x amount
-			}
-		}
-		return newItem; //If no quantity of item is dropped
-	}
 }
