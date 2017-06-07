@@ -1,7 +1,0 @@
-stores{wood:0,cloth:0,hide:0,teeth:0,meat:0,cooked_meat:0,iron:0,steel};
-weapons{torch:0,wood_sword:0,iron_sword:0,steel_sword:0,bow:0,wood_arrow:0,steel_arrow:0,iron_arrow:0};
-buildings{traps:0,huts:0,villagers:0};
-unlocks{cart:false,lodge:false,smokehouse:false,steelworks:false,ironmine:false};
-personUnlocks{waterLevel:0,storageLevel:0,armorLevel};
-jobs{gatherer:10,hunter:0,trapper:0,chef:0,iron_miner:0,steelworker:0};
-boss{false};
