@@ -50,8 +50,8 @@ public class TheVillage {
 		{
 			if (index >=0 && index <=jobs.length)
 			{
-				jobs[0].setNumWorkers(jobs[0].getNumWorkers() - 1);
-				jobs[index].setNumWorkers(jobs[index].getNumWorkers() + 1);
+				jobs[0].removeWorkers();
+				jobs[index].addWorkers();
 				return true;
 			}
 			return false;
@@ -66,8 +66,8 @@ public class TheVillage {
 		{
 			if (index >=0 && index <=jobs.length)
 			{
-				jobs[0].setNumWorkers(jobs[0].getNumWorkers() + 1);
-				jobs[index].setNumWorkers(jobs[index].getNumWorkers() - 1);
+				jobs[0].addWorkers();
+				jobs[index].removeWorkers();
 				return true;
 			}
 			return false;
