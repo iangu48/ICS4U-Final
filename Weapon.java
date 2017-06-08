@@ -25,9 +25,5 @@ public class Weapon extends Item{
 	public int getStrength() {
 		return strength;
 	}
-
-	public int compareTo(Weapon other) {
-		return this.strength - other.strength;
-	}
 	
 }
