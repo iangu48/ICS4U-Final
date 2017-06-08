@@ -15,9 +15,9 @@ public class Chef extends Workers{
 	
 	public Resource gatherResources() {
 		Item[] items = {
-				(new Store(this.getNumWorkers() * PLUSCOOKEDMEAT, 7, "cooked meat")),
-				(new Store(this.getNumWorkers() * MINUSWOOD, 0, "wood")),
-				(new Store(this.getNumWorkers() * MINUSMEAT, 6, "meat"))		
+				(new Material(this.getNumWorkers() * PLUSCOOKEDMEAT, 7, "cooked meat")),
+				(new Material(this.getNumWorkers() * MINUSWOOD, 0, "wood")),
+				(new Material(this.getNumWorkers() * MINUSMEAT, 6, "meat"))		
 						};
 		
 		return new Resource(items);

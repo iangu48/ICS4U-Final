@@ -46,7 +46,7 @@ public abstract class Item {
 	}
 	
 	public boolean equals(Item other) {
-		return false;
+		return this.itemCode == other.itemCode;
 	}
 	
 	public String toString() {
@@ -65,8 +65,8 @@ public abstract class Item {
 	//returns new instance of item with amount, and deducts amount from implicit item; null if num > amount
 	public Item retrieve(int num) {
 		if (deduct(num)) {
-			if (this instanceof Store)
-				return new Store(num, this.getItemCode(), ((Store)this).getName());
+			if (this instanceof Material)
+				return new Material(num, this.getItemCode(), ((Material)this).getName());
 			else if (this instanceof Weapon)
 				return new Weapon(num, this.getItemCode(), name, ((Weapon)this).getStrength());
 			else
@@ -75,6 +75,11 @@ public abstract class Item {
 			return null;
 	}
 	
-	
+	public void add(Item other) {
+		if (this.equals(other)) {
+			this.amount += other.amount;
+			other.amount = 0;
+		}
+	}
 
 }

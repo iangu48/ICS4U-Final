@@ -14,8 +14,8 @@ public class Hunter extends Workers{
 
 	public Resource gatherResources() {
 		Item[] items = {
-				new Store(this.getNumWorkers() * PLUSWOOD, 0, "wood"),
-				new Store(this.getNumWorkers() * PLUSMEAT, 6, "meat")
+				new Material(this.getNumWorkers() * PLUSWOOD, 0, "wood"),
+				new Material(this.getNumWorkers() * PLUSMEAT, 6, "meat")
 						};
 		
 		return new Resource(items);
