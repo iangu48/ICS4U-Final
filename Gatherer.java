@@ -13,7 +13,7 @@ public class Gatherer extends Workers{
 	
 	public Resource gatherResources() {
 		Item[] items = {
-				new Store(PLUSWOOD * this.getNumWorkers(), 0, "wood")
+				new Material(PLUSWOOD * this.getNumWorkers(), 0, "wood")
 						};
 		
 		return new Resource(items);

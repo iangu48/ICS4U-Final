@@ -27,7 +27,4 @@ public class Healing extends Item{
 		return healed;
 	}
 	
-	public int compareTo(Healing other) {
-		return this.healed - other.healed;
-	}
 }

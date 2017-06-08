@@ -50,8 +50,8 @@ public class TheVillage {
 		{
 			if (index >=0 && index <=jobs.length)
 			{
-				jobs[0].removeWorkers();
-				jobs[index].addWorkers();
+				jobs[0].setNumWorkers(jobs[0].getNumWorkers() - 1);
+				jobs[index].setNumWorkers(jobs[index].getNumWorkers() + 1);
 				return true;
 			}
 			return false;
@@ -66,8 +66,8 @@ public class TheVillage {
 		{
 			if (index >=0 && index <=jobs.length)
 			{
-				jobs[0].addWorkers();
-				jobs[index].removeWorkers();
+				jobs[0].setNumWorkers(jobs[0].getNumWorkers() + 1);
+				jobs[index].setNumWorkers(jobs[index].getNumWorkers() - 1);
 				return true;
 			}
 			return false;
@@ -86,11 +86,11 @@ public class TheVillage {
 	}
 	
 	//Uses gatherResources() from each worker, combines each resource into one, and returns it
-	public Resource gatherResources() {
-		Resource resource = jobs[0].gatherResources();
-		for (int i = 1; i < 6; i++)
-			resource = resource.combineResources(jobs[i].gatherResources());
-		return resource;
+	public Resource gatherResources(int worker) {
+		if (worker >= 0 && worker < 6) {
+			return jobs[worker].gatherResources();
+		} else
+			return null;
 	}
 	
 }

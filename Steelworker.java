@@ -15,9 +15,9 @@ public class Steelworker extends Workers{
 
 	public Resource gatherResources() {
 		Item[] items = {
-				new Store(this.getNumWorkers() * PLUSSTEEL, 2, "steel"),
-				new Store(this.getNumWorkers() * MINUSIRON, 1, "iron"),
-				new Store(this.getNumWorkers() * MINUSWOOD, 0, "wood")
+				new Material(this.getNumWorkers() * PLUSSTEEL, 2, "steel"),
+				new Material(this.getNumWorkers() * MINUSIRON, 1, "iron"),
+				new Material(this.getNumWorkers() * MINUSWOOD, 0, "wood")
 						};
 		
 		return new Resource(items);

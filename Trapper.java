@@ -14,8 +14,8 @@ public class Trapper extends Workers{
 	
 	public Resource gatherResources() {
 		Item[] items = {
-				new Store(this.getNumWorkers() * PLUSBAIT, 8, "bait"),
-				new Store(this.getNumWorkers() * MINUSMEAT, 6, "meat")
+				new Material(this.getNumWorkers() * PLUSBAIT, 8, "bait"),
+				new Material(this.getNumWorkers() * MINUSMEAT, 6, "meat")
 						};
 		
 		return new Resource(items);
