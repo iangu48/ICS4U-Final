@@ -5,8 +5,8 @@ public class Fight {
 
     //Constructor for Fight
     public Fight(Enemy enemy, Player player) {
-        this.enem = enemy;
-        this.play = player;
+        this.enemy = enemy;
+        this.player = player;
     }
     private boolean startFight(Enemy enemy) {
         //gui.startBattle() START BATTLE FROM GUI
