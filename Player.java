@@ -55,11 +55,29 @@ public class Player extends Entity {
 	public boolean buttonPressed() {
 		//return true when button pressed
 	}
-	public int buttonPressed2(){
-		//return index of resource
+	public Item buttonPressed2(){
+		//return item with amount +1 or -1
 	}
 	
-	public void prepare(Item wep, Loot other) {  
+	public void bringItem(int i) {
+		if (currentStorage < maxStorage) {
+			Item temp = other.getInventory().changeResources(buttonPressed2()); 	//deduct from resource put into temp
+			for (int i = 0; i < store.length(); i++)
+				if (store.getLoot(i).equals(temp))
+					store.add(i);
+		}
+	}
+	
+	public void returnItem(int i, theRoom other) {
+		if (store.getLoot(buttonPressed2()).getAmount() > 0) {
+			Item temp = other.getInventory().changeResources(buttonPressed2()); 	//add from resource put -1 into temp
+			for (int i = 0; i < store.length(); i++)
+				if (store.getLoot(i).equals(temp))
+					store.minus(i);
+		}
+	}
+	
+/*	public void prepare(Item wep, Loot other) {  
 		
 		strongestWep = wep; //button click for weapon (returns weapon itself as item)
 		currentStorage += 1;
@@ -75,7 +93,7 @@ public class Player extends Entity {
 		  */	
 		
 		
-		while (!buttonPressed()) {
+/*		while (!buttonPressed()) {
 			display(other);
 			display(store);
 			//After button +1 clicked for certain resource 
@@ -93,9 +111,8 @@ public class Player extends Entity {
 						store.minus(i);
 			}
 		}
-	}
-			
-	public void receiveLoot(Loot other) {
+	}*/			
+/*	public void receiveLoot(Loot other) {
 	
 	/*		Screw the entire code
 			U KNOW WHAT U FOKING GOTTA DO
@@ -104,7 +121,7 @@ public class Player extends Entity {
 			do something similar to prepare in which u can add and subtract except u need a retrieve method somewhere else.
 	
 	*/ 
-		
+		/*
 		while (!buttonPressed()) {
 			display(other);
 			display(store);
@@ -125,7 +142,7 @@ public class Player extends Entity {
 		}
 		//2nd prepare class for when loot is picked up :)
 	}
-	
+	*/
 	public void display(Loot other) {
 	//displays loot or inventory, if inventory will be: display(Player.getStore)
 	}
