@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eadc64fd-a561-420a-9f1d-e9f9f129e1bf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeaponCosts.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/constants.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Constants.java" afterPath="$PROJECT_DIR$/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constants.txt" afterPath="$PROJECT_DIR$/constants.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,21 +16,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Constants.java">
+      <file leaf-file-name="WeaponCosts.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WeaponCosts.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="64" column="14" lean-forward="true" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="constants.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/constants.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -54,8 +44,9 @@
         <option value="$PROJECT_DIR$/RandomGenerator.java" />
         <option value="$PROJECT_DIR$/ItemDrop.java" />
         <option value="$PROJECT_DIR$/Design + Psudo Code/Enemies.yml" />
-        <option value="$PROJECT_DIR$/constants.txt" />
         <option value="$PROJECT_DIR$/Constants.java" />
+        <option value="$PROJECT_DIR$/constants.txt" />
+        <option value="$PROJECT_DIR$/WeaponCosts.txt" />
       </list>
     </option>
   </component>
@@ -383,7 +374,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/constants.txt">
+    <entry file="file://$PROJECT_DIR$/WeaponCosts.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
@@ -514,18 +505,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/constants.txt">
+    <entry file="file://$PROJECT_DIR$/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+        <state relative-caret-position="85">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Constants.java">
+    <entry file="file://$PROJECT_DIR$/WeaponCosts.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="64" column="14" lean-forward="true" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
