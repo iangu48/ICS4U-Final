@@ -84,7 +84,20 @@ public class GameMechanics {
     // ========== END OF FINALS ==========
 
     // ========== START OF UPGRADE COSTS ==========
+    public static Resource[] swordCosts(String file)
+    {
+        try
+        {
+            BufferedReader in = new BufferedReader(new FileReader(file));
+            
 
+        }
+        catch(IOException iox)
+        {
+            System.out.println("You have a problem");
+            System.exit(0);
+        }
+    }
     // ========== END OF UPGRADE COSTS ==========
 
     // ========== START OF WEAPONS ===========

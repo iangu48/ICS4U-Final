@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eadc64fd-a561-420a-9f1d-e9f9f129e1bf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeaponCosts.txt" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/constants.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Constants.java" afterPath="$PROJECT_DIR$/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GameMechanics.java" afterPath="$PROJECT_DIR$/GameMechanics.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeaponCosts.txt" afterPath="$PROJECT_DIR$/WeaponCosts.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,11 +16,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WeaponCosts.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WeaponCosts.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WeaponCosts.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="170">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameMechanics.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/GameMechanics.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="535">
+              <caret line="91" column="12" lean-forward="false" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -47,6 +57,7 @@
         <option value="$PROJECT_DIR$/Constants.java" />
         <option value="$PROJECT_DIR$/constants.txt" />
         <option value="$PROJECT_DIR$/WeaponCosts.txt" />
+        <option value="$PROJECT_DIR$/GameMechanics.java" />
       </list>
     </option>
   </component>
@@ -60,7 +71,7 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="640" />
+    <option name="x" value="548" />
     <option name="width" value="640" />
     <option name="height" value="984" />
   </component>
@@ -299,7 +310,7 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="640" y="0" width="640" height="984" extended-state="0" />
+    <frame x="548" y="0" width="640" height="984" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -515,8 +526,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WeaponCosts.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameMechanics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="91" column="12" lean-forward="false" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="12" />
           <folding />
         </state>
       </provider>
