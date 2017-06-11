@@ -1,0 +1,340 @@
+package test;
+
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Test {
+
+    static JFrame lootWindow;
+    static LootDisplay display;
+    static int max = 25;
+    static int current = 0;
+
+    public static void main(String[] args) {
+        Item[] items = new Item[5];
+        items[0] = new Item(1, 1);
+        items[1] = new Item(2, 3);
+        items[2] = new Item(3, 5);
+        items[3] = new Item(4, 12);
+        items[4] = new Item(5, 1);
+        Item[] drops = new Item[3];
+        drops[0] = new Item(1, 4);
+        drops[1] = new Item(3, 1);
+        drops[2] = new Item(10, 5);
+        Loot inventory = new Loot(items);
+        Loot loot = new Loot(drops);
+        for (int i = 0; i < inventory.length(); i++) {
+            current += inventory.getItem(i).amount;
+        }
+
+        lootWindow = new JFrame("Loot");
+        lootWindow.setSize(480, 640);
+        display = new LootDisplay(480, 640, inventory, loot);
+        lootWindow.setContentPane(display);
+        lootWindow.repaint();
+        lootWindow.setVisible(true);
+        lootWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //new ButtonHandler(inventory, loot, items[0]).actionPerformed(new ActionEvent(new Object(), 1, "asd"));
+    }
+
+    private static class Item {
+
+        int id;
+        int amount;
+        String name;
+
+        public Item(int id, int amount) {
+            this.id = id;
+            this.amount = amount;
+            name = "" + id;
+        }
+
+        public Item(Item item) {
+            this.id = item.id;
+            this.amount = item.amount;
+        }
+
+        public String toString() {
+            return name + ": " + amount;
+        }
+
+        public boolean add(Item other) {
+            if (id == other.id) {
+                amount += other.amount;
+                other.amount = 0;
+                return true;
+            }
+            return false;
+        }
+
+        public Item retrieve(int amount) {
+            if (this.amount >= amount) {
+                this.amount -= amount;
+                return new Item(id, amount);
+            }
+            return null;
+        }
+
+        public boolean equals(Item item) {
+            return id == item.id;
+        }
+
+    }
+
+    private static class Loot {
+
+        Item[] items;
+
+        public Loot(Item[] items) {
+            this.items = items;
+        }
+
+        public Loot(Loot l) {
+            Item[] items = new Item[l.length()];
+            for (int i = 0; i < items.length; i++) {
+                items[i] = new Item(l.getItem(i));
+            }
+        }
+
+        public void add(Item item) {
+            boolean added = false;
+            for (int i = 0; i < items.length && !added; i++) {
+                if (items[i].add(item)) {
+                    added = true;
+                }
+            }
+            if (!added) {
+                items = Arrays.copyOf(items, items.length + 1);
+                items[items.length - 1] = item;
+            }
+        }
+
+        public Item getItem(int i) {
+            if (i >= 0 && i < items.length) {
+                return items[i];
+            }
+            return null;
+        }
+
+        public Item getItem(Item item) {
+            for (int i = 0; i < items.length; i++) {
+                if (items[i].equals(item)) {
+                    return items[i];
+                }
+            }
+            return null;
+        }
+
+        public int getAmount(Item item) {
+            for (int i = 0; i < items.length; i++) {
+                if (items[i].equals(item)) {
+                    return items[i].amount;
+                }
+            }
+            return 0;
+        }
+
+        public int length() {
+            return items.length;
+        }
+
+        public void updateArray() {
+            int empty = 0;
+            for (int i = 0; i < items.length; i++) {
+                if (items[i].amount == 0) {
+                    empty++;
+                    for (int j = i; j < items.length - empty; j++) {
+                        items[j] = items[j + 1];
+                    }
+                }
+            }
+            items = Arrays.copyOf(items, items.length - empty);
+        }
+
+        public void addInventories(Loot other) {
+            for (int i = 0; i < items.length; i++) {     //cycles through other Loot
+                Item tempItem = other.getItem(i); 			//store item into a temp variable
+                boolean added = false;                  //check if other Loot has been added
+                for (int j = 0; j < other.length() && !added; j++) { //cycles through implicit Loot
+                    if (items[j].equals(tempItem)) {
+                        items[j].add(items[j]); //adds them
+                        added = true;
+                    }
+                }
+                if (!added) {
+                    tempItem = other.getItem(items.length);
+                    Item[] newItems = Arrays.copyOf(items, items.length + 1);       //adds that unadded item to end of store and that is placed in a new Loot item
+                    newItems[items.length] = tempItem;
+                    items = newItems;
+                }
+            }
+        }
+    }
+
+    private static class Display extends JPanel {
+
+        protected static Color backgroundColor = Color.BLACK;
+        protected static Color textColor = Color.WHITE;
+        protected final static int TEXTSPACING = 25;
+        protected final static int LINESPACING = 15;
+
+        int width;
+        int height;
+
+        public Display(int width, int height) {
+            this.width = width;
+            this.height = height;
+            setSize(width, height);
+        }
+
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            paintBackground(g);
+            paintContents();
+        }
+
+        public void paintBackground(Graphics g) {
+            Graphics2D g2d = (Graphics2D) g;
+            g2d.setColor(backgroundColor);
+            g2d.fillRect(0, 0, width, height);
+        }
+
+        public void paintContents() {
+
+        }
+
+    }
+
+    private static class LootDisplay extends Display {
+
+        Loot inventory;
+        Loot loot;
+        Loot all;
+        int rows;
+
+        public LootDisplay(int width, int height, Loot inventory, Loot loot) {
+            super(width, height);
+            this.inventory = inventory;
+            this.loot = loot;
+            setLayout(new GridLayout(1, 1));
+            addContents();
+        }
+
+        public void addContents() {
+            setLayout(new GridLayout(0, 5));
+            add(new JLabel());
+            add(new JLabel());
+            JLabel inventoryLabel = new JLabel("Inventory");
+            inventoryLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            inventoryLabel.setForeground(textColor);
+            add(inventoryLabel);
+            JLabel lootLabel = new JLabel("Loot");
+            lootLabel.setForeground(textColor);
+            lootLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            add(lootLabel);
+            add(new JLabel());
+
+            for (int i = 0; i < inventory.length(); i++) {
+                Item inventoryItem = inventory.getItem(i);
+                Item lootItem = loot.getItem(inventoryItem);
+                if (lootItem == null) {
+                    lootItem = new Item(inventoryItem.id, 0);
+                }
+                JLabel name = new JLabel(inventoryItem.toString());
+                name.setForeground(textColor);
+                add(name);
+                JLabel inventoryAmount = new JLabel("" + inventoryItem.amount);
+                inventoryAmount.setForeground(textColor);
+                inventoryAmount.setHorizontalAlignment(SwingConstants.CENTER);
+                JLabel lootAmount = new JLabel("" + lootItem.amount);
+                lootAmount.setForeground(textColor);
+                lootAmount.setHorizontalAlignment(SwingConstants.CENTER);
+                JButton dropButton = new JButton("Drop");
+                if (inventoryItem.amount == 0) {
+                    dropButton.setEnabled(false);
+                }
+                JButton takeButton = new JButton("Take");
+                if (lootItem.amount == 0) {
+                    takeButton.setEnabled(false);
+                }
+                dropButton.addActionListener(new ButtonHandler(inventory, loot, inventoryItem, lootItem, dropButton, inventoryAmount, lootAmount, takeButton, -1));
+                takeButton.addActionListener(new ButtonHandler(loot, inventory, lootItem, inventoryItem, takeButton, lootAmount, inventoryAmount, dropButton, 1));
+                add(dropButton);
+                add(inventoryAmount);
+                add(lootAmount);
+                add(takeButton);
+            }
+            for (int i = 0; i < loot.length(); i++) {
+                Item lootItem = loot.getItem(i);
+                if (inventory.getItem(lootItem) == null) {
+                    Item inventoryItem = new Item(lootItem.id, 0);
+                    JLabel name = new JLabel(inventoryItem.toString());
+                    name.setForeground(textColor);
+                    add(name);
+                    JLabel inventoryAmount = new JLabel("0");
+                    inventoryAmount.setForeground(textColor);
+                    inventoryAmount.setHorizontalAlignment(SwingConstants.CENTER);
+                    JLabel lootAmount = new JLabel("" + lootItem.amount);
+                    lootAmount.setForeground(textColor);
+                    lootAmount.setHorizontalAlignment(SwingConstants.CENTER);
+                    JButton dropButton = new JButton("Drop");
+                    dropButton.setEnabled(false);
+                    JButton takeButton = new JButton("Take");
+                    dropButton.addActionListener(new ButtonHandler(inventory, loot, inventoryItem, lootItem, dropButton, inventoryAmount, lootAmount, takeButton, -1));
+                    takeButton.addActionListener(new ButtonHandler(loot, inventory, lootItem, inventoryItem, takeButton, lootAmount, inventoryAmount, dropButton, 1));
+                    add(dropButton);
+                    add(inventoryAmount);
+                    add(lootAmount);
+                    add(takeButton);
+                }
+            }
+
+        }
+    }
+
+    private static class ButtonHandler implements ActionListener {
+
+        private final Loot origin;
+        private final Loot target;
+        private final Item item;
+        private final Item linkedItem;
+        private final JButton forwardButton;
+        private final JLabel thisLabel;
+        private final JLabel otherLabel;
+        private final JButton reverseButton;
+        private final int modifier;
+
+        public ButtonHandler(Loot origin, Loot target, Item item, Item linkedItem, JButton forwardButton, JLabel thisLabel, JLabel otherLabel, JButton reverseButton, int modifier) {
+            this.origin = origin;
+            this.target = target;
+            this.item = item;
+            this.linkedItem = linkedItem;
+            this.forwardButton = forwardButton;
+            this.thisLabel = thisLabel;
+            this.otherLabel = otherLabel;
+            this.reverseButton = reverseButton;
+            this.modifier = modifier;
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            System.out.println(current + " " + modifier + " " + max);
+            if (current + modifier <= max) {
+                current += modifier;
+                linkedItem.add(item.retrieve(1));
+                if (linkedItem.amount == 0) {
+                    target.add(linkedItem);
+                }
+                if (item.amount == 0) {
+                    forwardButton.setEnabled(false);
+                }
+                reverseButton.setEnabled(true);
+                thisLabel.setText("" + (Integer.parseInt(thisLabel.getText()) - 1));
+                otherLabel.setText("" + (Integer.parseInt(otherLabel.getText()) + 1));
+                origin.updateArray();
+            }
+        }
+    }
+
+}
