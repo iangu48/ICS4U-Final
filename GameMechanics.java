@@ -1,3 +1,5 @@
+import java.io.*;
+
 public class GameMechanics {
 /*
     try
@@ -5,9 +7,7 @@ public class GameMechanics {
         String fileName = "";
         FileReader reader = new FileReader(fileName);
         BufferedReader bufferedReader = new BufferedReader(reader);
-
         String line;
-
         while ((line = bufferedReader.readLine()) != null) {
             //PARSE
         }
@@ -17,9 +17,10 @@ public class GameMechanics {
 */
 
     // ========== START OF MODIFIED BY DIFFICULTY ==========
-    public static final int HITCHANCE = 0.8-(0.1*DIFFICULTY);
+    public static final int DIFFICULTY = 0;
+    public static final double HITCHANCE = 0.8-(0.1*DIFFICULTY);
     public static final int MEATHEAL = 8;
-    public static final int GATHERWOOD =
+    public static final int GATHERWOOD = 1;
     // ========== END OF MODIFIED BY DIFFICULTY ==========
 
     // ========== START OF FINALS ==========
@@ -35,31 +36,16 @@ public class GameMechanics {
     public static final int BAIT = 8;
 
     //Armor Constant in levels
-    public static int ARMORS = new int[4];
-    ARMORS[0] = 10;
-    ARMORS[1] = 15;
-    ARMORS[2] = 25;
-    ARMORS[3] = 45;
+    public static int [] ARMORS = {10, 15, 25, 45};
 
     //Water Constants in levels
-    public static int WATER = new int[4];
-    WATER[0] = 5; //None
-    WATER[1] = 10; // Waterskin
-    WATER[2] = 20; //Watercask
-    WATER[3] = 60; //Iron Cask
+    public static int[] WATER = {5, 10, 20, 60};
 
     //Store Constants in levels
-    public static int CAPACITY = new int[4];
-    CAPACITY[0] = 10;
-    CAPACITY[1] = 20;
-    CAPACITY[2] = 40;
-    CAPACITY[3] = 70;
+    public static int [] CAPACITY = {10, 20, 40, 70};
 
     //Arrow Damage with levels
-    public static int ARROWDAMAGE = new int[3];
-    ARROWDAMAGE[0] = 0; //Wood Arrow
-    ARROWDAMAGE[1] = 2; // Steel Arrow
-    ARROWDAMAGE[2] = 5; // Iron Arrow
+    public static int [] ARROWDAMAGE = {0, 2, 5};
 
     //Worker Input
     //Gatherer
@@ -84,20 +70,70 @@ public class GameMechanics {
     // ========== END OF FINALS ==========
 
     // ========== START OF UPGRADE COSTS ==========
-    public static Resource[] swordCosts(String file)
+    
+    //This method is to get the number of items required for each upgrade,so we don't have to implement dynamic arrays
+    public static int[] numItems(String file)
     {
         try
         {
             BufferedReader in = new BufferedReader(new FileReader(file));
+            int [] numUpgrades = new int[3];
+            String str; //the file input
+            for (int i = 0; i < numUpgrades.length; i++)
+            {
+               int numItems = 0;
+               while((str = in.readLine()).charAt(0)!= ' ')//once the reader encounters a space instead of a number, we know that that upgrade set is complete
+               {
+                  numItems++;
+               }
+               numUpgrades[i] = numItems;
+            }
+            return numUpgrades; //the index of this array represents which upgrade and the number represents how many items are required for each upgrade
             
-
         }
         catch(IOException iox)
         {
-            System.out.println("You have a problem");
-            System.exit(0);
+            return null;
         }
     }
+    
+    public static Resource[] costs(String file)
+    {
+        try
+        {
+            BufferedReader in = new BufferedReader(new FileReader(file));
+            Resource[] upgrades = new Resource[3];  //there are 3 upgrades for every upgrade possible (ex. armour, weapon, health, etc)          
+            int [] numItems = numItems(file); //get the number of items required for each upgrade
+            for (int i = 0; i < upgrades.length; i++)
+            {
+               Item[] costs = new Item[numItems[i]];//in each upgrade, the number of item it takes utilizes the numItems method, so dynamic arrays are unnecessary
+               for (int j = 0; j < costs.length; j++)
+               {
+                  String item = in.readLine();
+                  String[] str = item.split(" ");
+                  int code = Integer.parseInt(str[0]);
+                  int amount = (Integer.parseInt(str[1]))*(-1);
+                  String name = " "; //TheRoom.getInventory().findItemById(code).getName();
+                  costs[i] = new Material(amount, code, name);  
+               }
+               upgrades[i] = new Resource(costs);
+               in.readLine();
+            }
+            
+            return upgrades;
+        }
+        catch(IOException iox)
+        {
+            return null;
+        }
+    }
+    
+    //Upgrade Cost Instantiation: 
+    public static Resource[] swordUpgrades = costs("swordCosts.txt");
+    public static Resource[] healthUpgrades = costs("healthCosts.txt");
+    public static Resource[] storageUpgrades = costs("storageCosts.txt");
+    public static Resource[] waterUpgrades = costs("waterCosts.txt");
+    public static Resource[] armorUpgrades = costs("armorCosts.txt");
     // ========== END OF UPGRADE COSTS ==========
 
     // ========== START OF WEAPONS ===========
