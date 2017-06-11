@@ -1,0 +1,228 @@
+package test;
+
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Test {
+
+    static JFrame lootWindow;
+    static LootDisplay display;
+
+    public static void main(String[] args) {
+        Item[] items = new Item[5];
+        items[0] = new Item(1, 1);
+        items[1] = new Item(2, 3);
+        items[2] = new Item(3, 5);
+        items[3] = new Item(4, 12);
+        items[4] = new Item(5, 1);
+        Item[] drops = new Item[3];
+        drops[0] = new Item(1, 4);
+        drops[1] = new Item(3, 1);
+        drops[2] = new Item(10, 5);
+        Loot inventory = new Loot(items);
+        Loot loot = new Loot(drops);
+
+        Item temp;
+        int i = 0;
+        while ((temp = loot.getItem(i)) != null) {
+            System.out.println(temp);
+            i++;
+        }
+
+        lootWindow = new JFrame("Loot");
+        lootWindow.setSize(480, 640);
+        display = new LootDisplay(480, 640, inventory, loot);
+        lootWindow.setContentPane(display);
+        lootWindow.repaint();
+        lootWindow.setVisible(true);
+        lootWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //new ButtonHandler(inventory, loot, items[0]).actionPerformed(new ActionEvent(new Object(), 1, "asd"));
+    }
+
+    private static class Item {
+
+        int id;
+        int amount;
+        String name;
+
+        public Item(int id, int amount) {
+            this.id = id;
+            this.amount = amount;
+            name = "" + id;
+        }
+
+        public String toString() {
+            return name + ": " + amount;
+        }
+
+        public boolean add(Item other) {
+            if (id == other.id) {
+                amount += other.amount;
+                other.amount = 0;
+                return true;
+            }
+            return false;
+        }
+
+        public Item retrieve(int amount) {
+            if (this.amount >= amount) {
+                this.amount -= amount;
+                return new Item(id, amount);
+            }
+            return null;
+        }
+
+    }
+
+    private static class Loot {
+
+        Item[] items;
+
+        public Loot(Item[] items) {
+            this.items = items;
+        }
+
+        public void add(Item item) {
+            boolean added = false;
+            for (int i = 0; i < items.length && !added; i++) {
+                if (items[i].add(item)) {
+                    added = true;
+                }
+            }
+            if (!added) {
+                items = Arrays.copyOf(items, items.length + 1);
+                items[items.length - 1] = item;
+            }
+        }
+
+        public Item getItem(int i) {
+            if (i >= 0 && i < items.length) {
+                return items[i];
+            }
+            return null;
+        }
+
+        public int length() {
+            return items.length;
+        }
+
+        public void updateArray() {
+            int empty = 0;
+            for (int i = 0; i < items.length; i++) {
+                if (items[i].amount == 0) {
+                    empty++;
+                    for (int j = i; j < items.length - empty; j++) {
+                        items[j] = items[j + 1];
+                    }
+                }
+            }
+            items = Arrays.copyOf(items, items.length - empty);
+        }
+    }
+
+    private static class Display extends JPanel {
+
+        protected static Color backgroundColor = Color.WHITE;
+        protected static Color textColor = Color.BLACK;
+        protected final static int TEXTSPACING = 25;
+        protected final static int LINESPACING = 15;
+
+        int width;
+        int height;
+
+        public Display(int width, int height) {
+            this.width = width;
+            this.height = height;
+            setSize(width, height);
+        }
+
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            paintBackground(g);
+            paintContents();
+        }
+
+        public void paintBackground(Graphics g) {
+            Graphics2D g2d = (Graphics2D) g;
+            g2d.setColor(backgroundColor);
+            g2d.fillRect(0, 0, width, height);
+        }
+
+        public void paintContents() {
+
+        }
+
+    }
+
+    private static class LootDisplay extends Display {
+
+        Loot inventory;
+        Loot loot;
+        int rows;
+        Display subDisplay;
+
+        public LootDisplay(int width, int height, Loot inventory, Loot loot) {
+            super(width, height);
+            this.inventory = inventory;
+            this.loot = loot;
+            setLayout(new GridLayout(1, 1));
+            paintContents();
+        }
+
+        public void paintContents() {
+            subDisplay = new Display(480, 640);
+            rows = Math.max(inventory.length(), loot.length());
+            subDisplay.setLayout(new GridLayout(rows, 2));
+            JLabel[] itemDescriptions = new JLabel[rows];
+            JButton[] itemButtons = new JButton[rows];
+            for (int i = 0; i < rows; i++) {
+                Item temp = inventory.getItem(i);
+                if (temp != null) {
+                    itemDescriptions[i] = new JLabel(temp.toString());
+                    itemDescriptions[i].setForeground(textColor);
+                    itemDescriptions[i].setVisible(true);
+                    System.out.println(itemDescriptions[i].getText());
+                    itemButtons[i] = new JButton("-");
+                    itemButtons[i].addActionListener(new ButtonHandler(inventory, loot, temp));
+                } else {
+                    itemDescriptions[i] = new JLabel();
+                    itemButtons[i] = new JButton();
+                    itemButtons[i].setVisible(false);
+                }
+            }
+            for (int i = 0; i < rows; i++) {
+                subDisplay.add(itemDescriptions[i]);
+                subDisplay.add(itemButtons[i]);
+            }
+            add(subDisplay);
+
+        }
+
+        public void repaintContents() {
+            remove(subDisplay);
+            paintContents();
+        }
+    }
+
+    private static class ButtonHandler implements ActionListener {
+
+        private Loot origin;
+        private Loot target;
+        private Item item;
+
+        public ButtonHandler(Loot origin, Loot target, Item item) {
+            this.origin = origin;
+            this.target = target;
+            this.item = item;
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            target.add(item.retrieve(1));
+            origin.updateArray();
+            display.repaintContents();
+        }
+    }
+
+}
