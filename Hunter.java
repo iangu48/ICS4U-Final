@@ -8,14 +8,11 @@
  */
 
 public class Hunter extends Workers{
-	
-	private static final int PLUSWOOD = 1;
-	private static final int PLUSMEAT = 1;
 
 	public Resource gatherResources() {
 		Item[] items = {
-				new Material(this.getNumWorkers() * PLUSWOOD, 0, "wood"),
-				new Material(this.getNumWorkers() * PLUSMEAT, 6, "meat")
+				new Material(this.getNumWorkers() * GameMechanics.HUNTERFUR, 5, "fur"),
+				new Material(this.getNumWorkers() * GameMechanics.HUNTERMEAT, 6, "meat")
 						};
 		
 		return new Resource(items);

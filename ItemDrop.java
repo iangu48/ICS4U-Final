@@ -20,10 +20,10 @@ public class ItemDrop
     {
         this.id = id;
         this.name = name;
-        this.drop = drop; //Get Drop
         this.min = min; //Get min
         this.max = max; //Get max
         this.chance = chance; //Get chance
+        drop = new Material(1, id, name);
     }
 
     public Item drop() {

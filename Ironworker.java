@@ -7,15 +7,12 @@
 	This class is a subclass of worker
  */
 
-public class Ironworker extends Workers{
-
-	private static final int PLUSIRON = 1;
-	private static final int MINUSCOOKEDMEAT = -1;
+public class Ironworker extends Workers{ 
 	
 	public Resource gatherResources() {
 		Item[] items = {
-				(new Material(this.getNumWorkers() * PLUSIRON, 1, "iron")),
-				(new Material(this.getNumWorkers() * MINUSCOOKEDMEAT, 7, "cooked meat"))
+				(new Material(this.getNumWorkers() * GameMechanics.MINERIRON, 1, "iron")),
+				(new Material(this.getNumWorkers() * GameMechanics.MINERMEAT, 7, "cooked meat"))
 						};
 		
 		return new Resource(items);
