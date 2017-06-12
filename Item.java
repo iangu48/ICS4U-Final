@@ -50,7 +50,7 @@ public abstract class Item {
 	}
 	
 	public String toString() {
-		return itemCode + " " + name + " x" + amount; 
+		return name + ":" + itemCode + " x" + amount; 
 	}
 	
 	//used by retrieve method to deduct amount from implicit item
