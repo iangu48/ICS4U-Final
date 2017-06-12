@@ -11,8 +11,8 @@ public class Hunter extends Workers{
 
 	public Resource gatherResources() {
 		Item[] items = {
-				new Material(this.getNumWorkers() * GameMechanics.HUNTERFUR, 5, "fur"),
-				new Material(this.getNumWorkers() * GameMechanics.HUNTERMEAT, 6, "meat")
+				new Material(this.getNumWorkers() * GameMechanics.HUNTERFUR, GameMechanics.FURID, "fur"),
+				new Material(this.getNumWorkers() * GameMechanics.HUNTERMEAT, GameMechanics.MEATID, "meat")
 						};
 		
 		return new Resource(items);

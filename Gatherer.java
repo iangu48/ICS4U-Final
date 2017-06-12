@@ -11,7 +11,7 @@ public class Gatherer extends Workers{
 	
 	public Resource gatherResources() {
 		Item[] items = {
-				new Material(GameMechanics.GATHERERWOOD * this.getNumWorkers(), 0, "wood")
+				new Material(GameMechanics.GATHERERWOOD * this.getNumWorkers(), GameMechanics.WOODID, "wood")
 						};
 		
 		return new Resource(items);

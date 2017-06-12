@@ -11,8 +11,8 @@ public class Ironworker extends Workers{
 	
 	public Resource gatherResources() {
 		Item[] items = {
-				(new Material(this.getNumWorkers() * GameMechanics.MINERIRON, 1, "iron")),
-				(new Material(this.getNumWorkers() * GameMechanics.MINERMEAT, 7, "cooked meat"))
+				(new Material(this.getNumWorkers() * GameMechanics.MINERIRON, GameMechanics.IRONID, "iron")),
+				(new Material(this.getNumWorkers() * GameMechanics.MINERMEAT,  GameMechanics.COOKEDMEATID, "cooked meat"))
 						};
 		
 		return new Resource(items);

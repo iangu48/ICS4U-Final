@@ -11,8 +11,8 @@ public class Trapper extends Workers{
 	
 	public Resource gatherResources() {
 		Item[] items = {
-				new Material(this.getNumWorkers() * GameMechanics.TRAPPERBAIT, 8, "bait"),
-				new Material(this.getNumWorkers() * GameMechanics.TRAPPERMEAT, 6, "meat")
+				new Material(this.getNumWorkers() * GameMechanics.TRAPPERBAIT, GameMechanics.BAITID, "bait"),
+				new Material(this.getNumWorkers() * GameMechanics.TRAPPERMEAT, GameMechanics.MEATID, "meat")
 						};
 		
 		return new Resource(items);

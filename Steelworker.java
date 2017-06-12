@@ -11,9 +11,9 @@ public class Steelworker extends Workers{
 
 	public Resource gatherResources() {
 		Item[] items = {
-				new Material(this.getNumWorkers() * GameMechanics.STEELSTEEL, 2, "steel"),
-				new Material(this.getNumWorkers() * GameMechanics.STEELIRON, 1, "iron"),
-				new Material(this.getNumWorkers() * GameMechanics.STEELWOOD, 0, "wood")
+				new Material(this.getNumWorkers() * GameMechanics.STEELSTEEL, GameMechanics.STEELID, "steel"),
+				new Material(this.getNumWorkers() * GameMechanics.STEELIRON, GameMechanics.IRONID, "iron"),
+				new Material(this.getNumWorkers() * GameMechanics.STEELWOOD, GameMechanics.WOODID, "wood")
 						};
 		
 		return new Resource(items);
