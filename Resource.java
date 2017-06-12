@@ -27,8 +27,8 @@ public class Resource {
 		
 		for (int i = 0; i < thisLength; i++)
 			newItems[i] = this.items[i];
-		for (int i = thisLength; i < otherLength + thisLength; i++)
-			newItems[i] = other.items[i];
+		for (int i = thisLength; i < length; i++)
+			newItems[i] = other.items[i-thisLength];
 		
 		int currentItemCode;
 		
@@ -81,7 +81,7 @@ public class Resource {
 		for (int i = 0; i < thisLength; i++)
 			newItems[i] = this.items[i];
 		for (int i = thisLength; i < otherLength + thisLength; i++)
-			newItems[i] = other.items[i];
+			newItems[i] = other.items[i-thisLength];
 		
 		int currentItemCode;
 		
@@ -135,5 +135,13 @@ public class Resource {
 				return items[i];
 		}
 		return null;
+	}
+	
+	public String toString() {
+		String s = "";
+		for (int i = 0; i < items.length; i++)
+			s += "\n" + items[i].toString();
+		
+		return s;
 	}
 }
