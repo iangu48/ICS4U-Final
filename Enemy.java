@@ -7,7 +7,7 @@ public class Enemy extends Entity {       //This is an enemy entity
 	public Enemy() {
 		hpMax = 1;
 		hpLeft = 1;
-		name = null;
+		name = "";
 		damage = 0;
 		lootDrop = null;
 	} 
