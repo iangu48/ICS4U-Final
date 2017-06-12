@@ -1,3 +1,11 @@
+/* 	Player
+	Tong Li Han
+	June 12, 2017
+	A.Y. Jackson S.S.
+	This class represents the player within "the dusky path" and is responsible for the addition of loot from enemies
+	or the dusky path itself. The class also has methods to run the fight class.
+*/
+
 public class Player extends Entity {
 	private int maxWater;
 	private int currentWater;
@@ -6,6 +14,7 @@ public class Player extends Entity {
 	private Loot store;
 	private Item strongestWep;
 	
+	//Player Constructor, initiallizes all values before adding boosts from items
 	public Player() {
 		maxWater = 1;
 		currentWater = 0;
@@ -14,6 +23,7 @@ public class Player extends Entity {
 		hpMax = 10;
 		strongestWep = null;
 	}
+	//mutators
 	public void equipArmor(int i) {
 		hpMax = i;
 	}
@@ -23,6 +33,7 @@ public class Player extends Entity {
 	public void equipStorage(int i) {
 		maxStorage = i;
 	}
+	//accessors
 	public int getMaxWater() {
 		return maxWater;
 	}
@@ -38,13 +49,13 @@ public class Player extends Entity {
 	public String getStrongestWep() {
 		return strongestWep.toString();
 	}
-	
+	// Attack method for player onto an enemy. Takes in Player implicitely, Enemy explicitely
 	public void attack(Entity other) {
-		int dmg = ((Weapon)strongestWep).getStrength();   //reads weapon dmg number (assuming index 0 of inventory is weapon)
+		int dmg = ((Weapon)strongestWep).getStrength();   //reads weapon dmg number 
 		other.receiveDamage(dmg);         //enemy "receives" attack	
 	}
-	
-	public void heal(int i) {
+	// Heal method
+	public void heal() {
 		int healing = ((Healing)store.getLoot(4)).getHealed();   //reads healing strength (assuming index of healing is 4)
 		
 		if (healing > hpMax - hpLeft)
@@ -58,7 +69,7 @@ public class Player extends Entity {
 	public Item buttonPressed2(){
 		//return item with amount +1 or -1
 	}
-	
+	//Method to bring an item from "The Room" to "The Dusky Path" (equiping)
 	public void bringItem(int i) {
 		if (currentStorage < maxStorage) {
 			Item temp = other.getInventory().changeResources(buttonPressed2()); 	//deduct from resource put into temp
@@ -67,7 +78,7 @@ public class Player extends Entity {
 					store.add(i);
 		}
 	}
-	
+	//Method to return an item from "The Dusky Path" to "The Room" (dequiping)
 	public void returnItem(int i, theRoom other) {
 		if (store.getLoot(buttonPressed2()).getAmount() > 0) {
 			Item temp = other.getInventory().changeResources(buttonPressed2()); 	//add from resource put -1 into temp
@@ -77,87 +88,20 @@ public class Player extends Entity {
 		}
 	}
 	
-/*	public void prepare(Item wep, Loot other) {  
-		
-		strongestWep = wep; //button click for weapon (returns weapon itself as item)
-		currentStorage += 1;
-		
-		/*index 0 = Weapon
-		  Storage cannot be found
-		  Armor cannot be found
-		  Waterskin cannot be found */
-		  
-		  /* FIXXXX
-		  	  So basically ur gonna have to make it able for player to add or subtract items from store
-		  	  And retrieve returns an item with that amount of items
-		  */	
-		
-		
-/*		while (!buttonPressed()) {
-			display(other);
-			display(store);
-			//After button +1 clicked for certain resource 
-			if (currentStorage < maxStorage) {
-				Item temp = resource[buttonPressed2()].retrieve(1); 	//deduct from resource put into temp
-				for (int i = 0; i < store.length(); i++)
-					if (store.getLoot(i).equals(temp))
-						store.add(i);
-			}
-			//After button -1 clicked
-			if (store.getLoot(buttonPressed2()).getAmount() > 0) {
-				Item temp = resource[buttonPressed2()].retrieve(-1); 	//add from resource put -1 into temp
-				for (int i = 0; i < store.length(); i++)
-					if (store.getLoot(i).equals(temp))
-						store.minus(i);
-			}
-		}
-	}*/			
-/*	public void receiveLoot(Loot other) {
-	
-	/*		Screw the entire code
-			U KNOW WHAT U FOKING GOTTA DO
-			ONLY INTERACT BETWEEN LOOT AND INVENTORY MUST BE SEPARATE 
-			
-			do something similar to prepare in which u can add and subtract except u need a retrieve method somewhere else.
-	
-	*/ 
-		/*
-		while (!buttonPressed()) {
-			display(other);
-			display(store);
-			//After button +1 clicked for certain resource 
-			if (currentStorage < maxStorage) {
-				Item temp = resource[buttonPressed2()].retrieve(1); 	//deduct from resource put into temp
-				for (int i = 0; i < store.length(); i++)
-					if (store.getLoot(i).equals(temp))
-						store.add(i);
-			}
-			//After button -1 clicked
-			if (store.getLoot(buttonPressed2()).getAmount() > 0) {
-				Item temp = resource[buttonPressed2()].retrieve(-1); 	//add from resource put -1 into temp
-				for (int i = 0; i < store.length(); i++)
-					if (store.getLoot(i).equals(temp))
-						store.minus(i);
-			}
-		}
-		//2nd prepare class for when loot is picked up :)
-	}
-	*/
+	//Display inventories
 	public void display(Loot other) {
 	//displays loot or inventory, if inventory will be: display(Player.getStore)
 	}
-	
-	
-	
+	//Take in all loot when found
 	public void selectAll(Loot other) { //picks up all loot if possible (ease of use)
 		store.addInventories(other);
 	}
-	
-	public void wipeInventory() {      //necessary for recieve loot logic and death
+	//Wipes your inventory
+	public void wipeInventory() {      //necessary for death
 		for (int i = 0; i < store.length(); i++) 
 			store.getLoot(i).setAmount(0);
 	}
-	
+	//Checks if player is still alive after receiving attack.
 	public boolean isAlive(){	
 		if (hpLeft > 0)
 			return true;
