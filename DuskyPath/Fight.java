@@ -13,6 +13,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import Game.GUI.*;
+import Game.GameMechanics.GameMechanics;
+import Game.Room.*;
 
 public class Fight {
 
@@ -131,8 +133,12 @@ public class Fight {
     }
 
     private void consumeMeat() {
-        player.heal(MEATHEAL);
-        enemyFight();
+        Item temp = player.getInventory().getLoot(new Material(GameMechanics.COOKEDMEATID, 0));
+        if (temp != null && temp.deduct(1))
+        {
+            player.heal(MEATHEAL);
+            enemyFight();
+        }
     }
 
     private void playerFight() {
