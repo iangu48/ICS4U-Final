@@ -135,7 +135,7 @@ public class Room {
 
     public static boolean buildSword(int level) {
         if (inventory.addResources(GameMechanics.swordUpgrades[level - 1])) {
-            inventory.addItem(GameMechanics.swords[level - 1]);
+            inventory.addItem(GameMechanics.swords[level]);
             return true;
         }
         return false;
