@@ -125,7 +125,7 @@ public class DuskyPath {
                   Enemy enemy = GameMechanics.enemies[(int)(Math.random() * 5)];
                   exploreMessages.addText(enemy.getDescription());
                   exploreWindow.setVisible(false);
-                  new Fight(player, new Enemy());
+                  new Fight(player, enemy);
                }
                else if (result < OUTPOSTRANGE)
                {
