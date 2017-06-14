@@ -11,7 +11,7 @@
  */
    import Game.Village.*;
    import Game.DuskyPath.Player;
-   import Game.Encription.Cipher;
+   import Game.Encryption.Cipher;
    import Game.GUI.*;
    import Game.GameMechanics.GameMechanics;
    import Game.Room.*;
@@ -19,6 +19,7 @@
    import java.util.Arrays;
    import java.util.Timer;
    import java.util.TimerTask;
+   import java.util.Scanner;
    import java.io.*;
    import java.awt.*;
    import java.awt.event.*;
@@ -118,7 +119,7 @@
             buildTrapButton.addActionListener(handler);
             buildTrapButton.setFont(BUTTONFONT);
             if (traps != null && traps.getAmount() == 10)
-         		buildTrapButton.setEnabled(false);
+               buildTrapButton.setEnabled(false);
             expeditionButton = new JButton("Expedition");
             expeditionButton.setToolTipText("Travel into the dusky path.");
             expeditionButton.addActionListener(handler);
@@ -726,6 +727,7 @@
                }
             };
          timer.scheduleAtFixedRate(task, 0, 1000); //1000ms = 1sec
+         Scanner sc = new Scanner (System.in);
       }
    
        public static void save() {

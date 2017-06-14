@@ -89,7 +89,7 @@ public class Fight {
             }
             if (!enemy.isAlive()) {
                 fightWindow.dispose();
-                DuskyPath.winFight();
+                enemy.giveLoot(player);
             } else if (!player.isAlive()) {
                 fightWindow.dispose();
                 DuskyPath.loseFight();
