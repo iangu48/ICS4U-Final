@@ -32,7 +32,7 @@ public class GameMechanics {
    public static final int STEELSWORDID = 12;
    public static final int BOWID = 13;
    public static final int TRAPID = 14;
-   public static final String[] itemNames = {"Wood", "Iron", "Steel", "Teeth", "Scales", "Fur", "Meat", "Cooked meat", "Bait", "Fist", "Wood sword", "Iron sword", "Steel sword", "Bow", "Trap"};
+   public static final String[] itemNames = {"Wood", "Iron", "Steel", "Teeth", "Scales", "Fur", "Meat", "Cooked meat", "Bait", "Fist", "Wood sworf", "Iron sworf", "Steel sworf", "Bow", "Trap"};
 
     //Armor Constant in levels
    public static int[] ARMORS = {10, 15, 25, 45};

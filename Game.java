@@ -11,7 +11,7 @@
  */
    import Game.Village.*;
    import Game.DuskyPath.Player;
-   import Game.Encryption.Cipher;
+   import Game.Encription.Cipher;
    import Game.GUI.*;
    import Game.GameMechanics.GameMechanics;
    import Game.Room.*;
@@ -117,6 +117,8 @@
             buildTrapButton.setToolTipText(GameMechanics.trapCost[0].toString());
             buildTrapButton.addActionListener(handler);
             buildTrapButton.setFont(BUTTONFONT);
+            if (traps != null && traps.getAmount() == 10)
+         		buildTrapButton.setEnabled(false);
             expeditionButton = new JButton("Expedition");
             expeditionButton.setToolTipText("Travel into the dusky path.");
             expeditionButton.addActionListener(handler);
@@ -308,7 +310,8 @@
                JButton addButton = new JButton("+");
                ButtonHandler handler = new ButtonHandler(temp, amount, removeButton, addButton);
                removeButton.addActionListener(handler);
-               removeButton.setEnabled(false);
+               if (Village.getNumWorkers(i) == 0)
+                  removeButton.setEnabled(false);
                removeButton.setFont(BUTTONSFONT);
                addButton.addActionListener(handler);
                addButton.setFont(BUTTONSFONT);

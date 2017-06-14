@@ -74,16 +74,6 @@ public class Player extends Entity {
       return store;
    }
    
-   public void setStrongest() {
-      boolean found = false;
-      for (int i = 0; i < store.length() && !found; i++) {
-         if (store.getLoot(i) instanceof Weapon) {
-            strongestWep = store.getLoot(i);
-            found = true;
-         }
-      }
-   }
-   
    public void travel()
    {
       drinkCooldown --;

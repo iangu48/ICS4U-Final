@@ -71,19 +71,42 @@ public class Room {
 
     public static void checkTrap() {
         Item trap = inventory.findItemById(GameMechanics.TRAPID);
+		  
         int numTraps;
         if (trap == null) {
             numTraps = 0;
         } else {
             numTraps = trap.getAmount();
         }
+		  
+		  Item bait = inventory.findItemById(GameMechanics.BAITID);
+		  
+        int numBait;
+        if (bait == null) {
+            numBait = 0;
+        } else {
+            numBait = bait.getAmount();
+        }
 
         for (int i = 0; i < numTraps; i++) {
             Item meat = GameMechanics.MEAT.drop();
             Item scales = GameMechanics.SCALES.drop();
             Item teeth = GameMechanics.TEETH.drop();
-
-            Item[] gains = {meat, scales, teeth};
+				
+				Item[] gains = {meat, scales, teeth};
+				
+				if (numBait > 0)
+				{
+					numBait--;
+					for (int j = 0; j < gains.length; j++)
+					{
+						Item temp = gains[j];
+						if (temp != null)
+						{
+							temp.setAmount(temp.getAmount() * 2);
+						}
+					}
+				}
             Resource obtained = new Resource(gains);
 
             inventory.combineResources(obtained);
