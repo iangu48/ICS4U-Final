@@ -11,7 +11,7 @@
  */
    import Game.Village.*;
    import Game.DuskyPath.Player;
-   import Game.Encription.Cipher;
+   import Game.Encryption.Cipher;
    import Game.GUI.*;
    import Game.GameMechanics.GameMechanics;
    import Game.Room.*;
