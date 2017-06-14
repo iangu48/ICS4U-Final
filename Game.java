@@ -699,22 +699,24 @@ public class Game {
                       }
                    }
                    if (workerCooldown > 0) {
-                      workerCooldown--;
-                      if (workerCooldown == 0) {
-                         Room.changeResources(Village.gatherResources());
-                         gameWindow.repaint();
-                         workerCooldown = 15;
-                         gameMessages.addText("Your villagers gathered some resources.");
-                      }
-                   }
-                   if (saveCooldown > 0) {
-                      saveCooldown--;
-                      if (saveCooldown == 0) {
-                         save();
-                         gameMessages.addText("Auto save.");
-                      }
-                      saveCooldown = 60;
-                   }
+                     workerCooldown--;
+                     if (workerCooldown == 0) {
+                        Resource[] resources = Village.gatherResources();
+                        for (int i = 0; i < resources.length; i++)
+                           Room.changeResources(resources[i]);
+                        gameWindow.repaint();
+                        workerCooldown = 15;
+                        gameMessages.addText("Your villagers gathered some resources.");
+                     }
+                  }
+                  if (saveCooldown > 0) {
+                     saveCooldown--;
+                     if (saveCooldown == 0) {
+                        save();
+                        gameMessages.addText("Auto save.");
+                        saveCooldown = 60;
+                     }
+                  }
                 }
              };
       timer.scheduleAtFixedRate(task, 0, 1000); //1000ms = 1sec
