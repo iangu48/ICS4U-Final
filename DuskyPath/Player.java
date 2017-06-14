@@ -77,7 +77,7 @@ public class Player extends Entity {
    public void setStrongest() {
       boolean found = false;
       for (int i = 0; i < store.length() && !found; i++) {
-         if (store.getLoot(i) instanceOf Weapon) {
+         if (store.getLoot(i) instanceof Weapon) {
             strongestWep = store.getLoot(i);
             found = true;
          }
