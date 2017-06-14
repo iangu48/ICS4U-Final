@@ -24,7 +24,7 @@ public class Enemy extends Entity {       //This is an enemy entity
 	
    public Enemy(Enemy other)
    {
-	super(other.name, other.getMaxHealth());
+	super(other.getName(), other.getMaxHealth());
 	this.damage = other.damage;
 	this.lootDrop = other.lootDrop;
 	this.description = other.description;
@@ -47,6 +47,6 @@ public class Enemy extends Entity {       //This is an enemy entity
    }
 	
    public String toString() {
-      return name;
+      return getName();
    }
 }
