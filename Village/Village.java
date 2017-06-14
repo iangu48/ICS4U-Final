@@ -77,12 +77,12 @@ public class Village {
     }
 
     //Uses gatherResources() from each worker, combines each resource into one, and returns it
-    public static Resource gatherResources() {
-        Resource resource = jobs[0].gatherResources();
-        for (int i = 1; i < 6; i++) {
-            resource.addResources(jobs[i].gatherResources());
+    public static Resource[] gatherResources() {
+        Resource[] resources = new Resource[jobs.length];
+        for (int i = 0; i < jobs.length; i++) {
+            resources[i] = jobs[i].gatherResources();
         }
-        return resource;
+        return resources;
     }
 
 }
