@@ -1,6 +1,7 @@
 package Game.Loot;
 
 import Game.Room.*;
+import Game.GameMechanics.GameMechanics
 
 public class ItemDrop
 {
@@ -26,21 +27,21 @@ public class ItemDrop
         this.max = max;
         this.chance = chance;
         if (id >=0 && id <=6 || id == 8 || id == 14)
- +        {
- +            drop = new Material(1, id, name);
- +        }
- +        else if (id >= 9 && id <= 12)
- +        {
- +            drop = new Weapon(1, id, GameMechanics.SWORDDAMAGE[id - 9]);
- +        }
- +        else if (id == 13)
- +        {
- +            drop = new Weapon(1, id, GameMechanics.BOWDAMAGE);
- +        }
- +        else
- +        {
- +            drop = new Healing(id, 1, GameMechanics.MEATHEAL);
- +        }
+      	{
+            drop = new Material(id, 1);
+         }
+      	 else if (id >= 9 && id <= 12)
+         {
+             drop = new Weapon(id, 1, GameMechanics.SWORDDAMAGE[id - 9]);
+         }
+         else if (id == 13)
+         {
+             drop = new Weapon(id, 1, GameMechanics.BOWDAMAGE);
+         }
+         else
+         {
+             drop = new Healing(id, 1, GameMechanics.MEATHEAL);
+         }
     }
 
     public Item drop() {
