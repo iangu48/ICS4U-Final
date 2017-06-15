@@ -1,6 +1,6 @@
 /*
 Class: GameMechanics.java
-Authors: Michael and Raghav
+Authors: Michael Chang and Raghav Srinivasan
 Date: June 15, 2017
 School: AY Jackson SS
 Purpose: To store all the constant values needed throghout the product. Some values are hardcoded, others are read from text files.
