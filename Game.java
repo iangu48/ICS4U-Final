@@ -141,7 +141,7 @@
             g.setFont(textFont);
          
          // displays the messages in order
-            g.drawString("Welcome to the parody of the game \"A dark room\"", XPOSITION, MESSAGEYPOSITION);
+            g.drawString("Welcome to the game \"La Sala Morena\"", XPOSITION, MESSAGEYPOSITION);
             g.drawString("Made by: ", XPOSITION, CREDITSYPOSITION);
             for (int i = 0; i < creators.length; i++)
             {
