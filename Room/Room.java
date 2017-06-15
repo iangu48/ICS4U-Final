@@ -177,6 +177,8 @@ public class Room {
         if (arrowLevel > -1 && level > arrowLevel && level < MAXLEVEL) {
             if (inventory.addResources(GameMechanics.arrowUpgrades[level - 1])) {
                 arrowLevel = level;
+                Weapon bow = (Weapon)inventory.findItemById(GameMechanics.BOWID);
+                bow.setStrength(bow.getStrength() + GameMechanics.ARROWDAMAGE[level - 1]);
                 return true;
             }
         }
