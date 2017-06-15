@@ -14,8 +14,10 @@ import Game.Room.*;
 
 public class Gatherer extends Workers {
 
+	 //constants
     public static final Material PLUSWOOD = new Material(GameMechanics.WOODID, GameMechanics.GATHERERWOOD);
 
+    //Returns final resources of each type
     public Resource gatherResources() {
         int workers = getNumWorkers();
         Item[] items = {new Material(PLUSWOOD, PLUSWOOD.getAmount() * workers)};
@@ -26,6 +28,7 @@ public class Gatherer extends Workers {
         return "Gatherer";
     }
 
+    //Returns types of resources that gatherResources gives
     public Resource getUnitResource() {
         Item[] items = {new Material(PLUSWOOD)};
         return new Resource(items);
