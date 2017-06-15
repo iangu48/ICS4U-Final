@@ -52,14 +52,15 @@ public abstract class Item {
     }
 
     public boolean addItem(Item other) {
-        if (this != other && equals(other)) {
-            this.amount += other.amount;
-            other.amount = 0;
-            return true;
-        }
-        return false;
-    }
-
+      if (this == other)
+         return true;
+      if (equals(other)) {
+         this.amount += other.amount;
+         other.amount = 0;
+         return true;
+      }
+      return false;
+   }
     public String toString() {
         return getName();
     }
