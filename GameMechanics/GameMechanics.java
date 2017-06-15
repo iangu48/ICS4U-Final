@@ -1,3 +1,12 @@
+/*
+Class: GameMechanics.java
+Authors: Michael and Raghav
+Date: June 15, 2017
+School: AY Jackson SS
+Purpose: To store all the constant values needed throghout the product. Some values are hardcoded, others are read from text files.
+*/
+
+
 package Game.GameMechanics;
 
 import Game.Game;
@@ -34,25 +43,26 @@ public class GameMechanics {
    public static final int TRAPID = 14;
    public static final String[] itemNames = {"Wood", "Iron", "Steel", "Teeth", "Scales", "Fur", "Meat", "Cooked meat", "Bait", "Fist", "Wood sword", "Iron sword", "Steel sword", "Bow", "Trap"};
 
+    //Each index in the arrays for the following constants represent the value of that upgrade at each level, where the index represents the level of upgrade
     //Armor Constant in levels
-   public static int[] ARMORS = {10, 15, 25, 45};
+   public static int[] ARMORS = {10, 15, 25, 45};//numbers represent health for the player
 
     //Water Constants in levels
-   public static int[] WATER = {5, 10, 20, 60};
+   public static int[] WATER = {5, 10, 20, 60}; //numbers represent water the player may carry, which is needed for the expedition
 
     //Store Constants in levels
-   public static int[] CAPACITY = {10, 20, 40, 70};
+   public static int[] CAPACITY = {10, 20, 40, 70}; //numbers represent how many items the player is capable of carrying
 
     //Arrow Damage with levels
-   public static int[] ARROWDAMAGE = {0, 2, 5};
+   public static int[] ARROWDAMAGE = {0, 2, 5}; //numbers represent how much damage this arrow upgrades adds on to the bow damage
 
     //Melee Damage with levels
-   public static int[] SWORDDAMAGE = {1, 2, 4, 6};
+   public static int[] SWORDDAMAGE = {1, 2, 4, 6}; //numbers represent sword damage
 
     //Bow Damage:
    public static int BOWDAMAGE = 5;
 
-    //Worker Input
+    //Worker Input: these constants represent how much of each resource is gained or lost when the worker does the task assigned to them
     //Gatherer
    public static final int GATHERERWOOD = 1;
     //Hunter
@@ -85,6 +95,11 @@ public class GameMechanics {
     // ========== END OF ITEM DROPS ==========
 
     // ========== START OF UPGRADE COSTS ==========
+    
+   //This method is to read in the item costs of each upgrade type from a file, referenced in the parameter
+   //The other parameter, numUpgrades, represents how many upgrades the player may make on this specific aspect of the game
+   //The method returns a Resource array, where the index of the array represents the UPGRADE number, which corresponds to the level-1 (since the first upgrade is actually a level 1 item, since level 0 is the default)
+   //The contents of the Resource represent the item cost for the specific upgrade
    public static Resource[] costs(String file, int numUpgrades) {
       try {
          BufferedReader in = new BufferedReader(new FileReader(new File("Game\\GameMechanics\\" + file)));
@@ -127,6 +142,7 @@ public class GameMechanics {
     // ========== END OF UPGRADE COSTS ==========
 
     // ========== START OF WEAPONS ===========
+   //To have specific weapons to refer to:
    public static Weapon fist = new Weapon(FISTID, 1, SWORDDAMAGE[0]);
    public static Weapon woodSword = new Weapon(WOODSWORDID, 1, SWORDDAMAGE[1]);
    public static Weapon ironSword = new Weapon(IRONSWORDID, 1, SWORDDAMAGE[2]);
@@ -141,6 +157,9 @@ public class GameMechanics {
    public static Material trap = new Material(TRAPID, 1);
 	 
 	 // ========== START OF ENEMIES ===========
+	
+   //This method takes in a file and reads that file to obtain the statistics of all enemies present in the game
+   //The Enemy array it returns is a list containing all enemies present in the game
    public static Enemy [] enemyRead(String file)
    {
       try
@@ -157,7 +176,7 @@ public class GameMechanics {
             int damage = Integer.parseInt(in.readLine());
             int numItems = Integer.parseInt(in.readLine()); //how many items the enemy can potentially drop
          	
-         	//Get the enemy's item drops:
+            //Get the enemy's item drops:
             ItemDrop[] items = new ItemDrop[numItems];
             for (int j = 0; j < numItems; j++)
             {
@@ -182,25 +201,30 @@ public class GameMechanics {
       }
    	
    }
-   public static Enemy[] enemies = enemyRead("enemies.txt");
-	 // ========== END OF ENEMIES ==========
+   public static Enemy[] enemies = enemyRead("enemies.txt"); //set the field
+   // ========== END OF ENEMIES ==========
 	 
+   //The following method is a list of all LootDrop items that the player may encounter at outposts on expeditions
+   //The file it takes in is the list of items it is to read
+   //The method returns an ItemDrop array, which shows the chances of obtaining each item on an expedition
    public static ItemDrop[] lootDrops(String file)
    {
       try
       {
          BufferedReader in = new BufferedReader(new FileReader(new File("Game\\GameMechanics\\" + file)));
-         int numItems = Integer.parseInt(in.readLine());
+         int numItems = Integer.parseInt(in.readLine()); //number of ItemDrop elements in the file is on the first line
          ItemDrop[] drops = new ItemDrop[numItems];
          for (int i = 0; i < numItems; i++)
          {
+            //Read in numbers for each item drop:
             int id = Integer.parseInt(in.readLine());
             int min = Integer.parseInt(in.readLine());
             int max = Integer.parseInt(in.readLine());
             double chance = Double.parseDouble(in.readLine());
-            in.readLine();
-            drops[i] = new ItemDrop(id, min, max, chance);
+            in.readLine(); //there is a space to get to the next drop item
+            drops[i] = new ItemDrop(id, min, max, chance);//create new item drop
          }
+	 in.close();
          return drops;
       }
       catch(IOException iox)
