@@ -1,4 +1,13 @@
-   package Game.Room;
+/*
+	ICS4U
+	Ian Gu
+	6/2/2017
+	AY Jackson SS
+	
+	This class is a subclass item, which represents
+	weapons
+ */
+package Game.Room;
 
     public class Weapon extends Item{
    
@@ -7,7 +16,6 @@
        public Weapon(int id, int amount, int strength) {
          super(id, amount);
          this.setStrength(strength);
-      // TODO Auto-generated constructor stub
       }
        
        public Weapon (Weapon weapon)
