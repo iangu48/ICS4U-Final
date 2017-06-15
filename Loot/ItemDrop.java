@@ -38,13 +38,13 @@ public class ItemDrop
         this.max = max;
         this.chance = chance;
         //instantiates item type using codes:
-        if (id >=GameMechanics.WOODID && id <=GameMechanics. || id == 8 || id == GameMechanics.TRAPID)
+        if (id >=GameMechanics.WOODID && id <=GameMechanics.MEATID || id == GameMechanics.BAITID || id == GameMechanics.TRAPID)
       	{
             drop = new Material(id, 1);
          }
       	 else if (id >= GameMechanics.FISTID && id <= GameMechanics.STEELSWORDID)
          {
-             drop = new Weapon(id, 1, GameMechanics.SWORDDAMAGE[id - 9]);
+             drop = new Weapon(id, 1, GameMechanics.SWORDDAMAGE[id - GameMechanics.FISTID]);
          }
          else if (id == GameMechanics.BOWID)
          {
