@@ -1,7 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+	ICS4U
+	Ian Gu
+	6/2/2017
+	AY Jackson SS
+	
+	This class is a subclass of worker
  */
 package Game.Village;
 
