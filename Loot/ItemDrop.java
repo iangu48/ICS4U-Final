@@ -1,7 +1,7 @@
 package Game.Loot;
 
 import Game.Room.*;
-import Game.GameMechanics.GameMechanics
+import Game.GameMechanics.GameMechanics;
 
 public class ItemDrop
 {
