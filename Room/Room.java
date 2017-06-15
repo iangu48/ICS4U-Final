@@ -135,6 +135,7 @@ public class Room {
 
     //builds a trap item and adds it to player inventory
     //returns a boolean to see if the player actually successfully builds item
+    //takes in the level of upgrade the user wishes to upgrade to, so the user may skip upgrades to go to more advanced options if available
     public static boolean buildTrap() {
         Item traps = inventory.findItemById(GameMechanics.TRAPID);
         if (traps == null || traps.getAmount() < 10) { //there is a limit on number of traps the player can own
@@ -150,6 +151,7 @@ public class Room {
 
     //upgrades the armour for the player
     //returns a boolean for if this upgrade is successful
+    //takes in the level of upgrade the user wishes to upgrade to, so the user may skip upgrades to go to more advanced options if available
     public static boolean upgradeArmor(int level) {
         if (level > armorLevel && level <= MAXLEVEL) {
             if (inventory.addResources(GameMechanics.armorUpgrades[level - 1])) {
@@ -160,6 +162,9 @@ public class Room {
         return false;
     }
 
+    //upgrades the storage capacity for the user to carry on expeditions - allows them to carry more loot
+    //returns a boolean for if this upgrade is successfull
+    //takes in the level of upgrade the user wishes to upgrade to, so the user may skip upgrades to go to more advanced options if available
     public static boolean upgradeStorage(int level) {
         if (level > storageLevel && level <= MAXLEVEL) {
             if (inventory.addResources(GameMechanics.storageUpgrades[level - 1])) {
@@ -169,7 +174,10 @@ public class Room {
         }
         return false;
     }
-
+    
+     //upgrades water storage for the player, so they can go on longer expeditions - water is consumed the longer the expedition is, and when the player runs out, they die
+     //returns a boolean for if this upgrade is successfull
+    //takes in the level of upgrade the user wishes to upgrade to, so the user may skip upgrades to go to more advanced options if available
     public static boolean upgradeWater(int level) {
         if (level > waterLevel && level <= MAXLEVEL) {
             if (inventory.addResources(GameMechanics.waterUpgrades[level - 1])) {
@@ -179,18 +187,25 @@ public class Room {
         }
         return false;
     }
-
+     
+    //Allows the user to build a sword and add it to their inventory
+    //takes in a level to see which sword the player wishes to buy
+    //returns a boolean for if this purchase is successful or not
     public static boolean buildSword(int level) {
-        if (inventory.addResources(GameMechanics.swordUpgrades[level - 1])) {
+        if (inventory.addResources(GameMechanics.swordUpgrades[level - 1])) { //requires user to pay for the item cost
             inventory.addItem(GameMechanics.swords[level]);
             return true;
         }
         return false;
     }
-
+ 
+    //Allows user to build a bow and add it to their inventory
+    //No parameters as there is only one type of bow
+    //returns a boolean for if the purchase is successful
     public static boolean buildBow() {
-         if (inventory.addResources(GameMechanics.bowCost[0])) {
+         if (inventory.addResources(GameMechanics.bowCost[0])) { //requires user to pay item cost
             Weapon bow = new Weapon(GameMechanics.compoundBow, 1);
+            //arrow level is unlocked for user to purchase to upgrade bow:
             if (arrowLevel <= 0)
             {
                bow.setStrength(0);
@@ -203,13 +218,17 @@ public class Room {
             return true;
          }
          return false;
-      }
+    }
+	
+     //Allows user to upgrade arrows to increase bow damage
+    //returns a boolean for if this upgrade is successfull
+    //takes in the level of upgrade the user wishes to upgrade to, so the user may skip upgrades to go to more advanced options if available
     public static boolean upgradeArrows(int level) {
-        if (arrowLevel > -2 && level > arrowLevel && level <= MAXLEVEL) {
+        if (arrowLevel > -2 && level > arrowLevel && level <= MAXLEVEL) { //requires bow to be unlocked before being able to upgrade
             if (inventory.addResources(GameMechanics.arrowUpgrades[level - 1])) {
                Weapon bow = (Weapon)inventory.findItemById(GameMechanics.BOWID);
                arrowLevel = level;
-               bow.setStrength(GameMechanics.BOWDAMAGE + GameMechanics.ARROWDAMAGE[level-1]);
+               bow.setStrength(GameMechanics.BOWDAMAGE + GameMechanics.ARROWDAMAGE[level-1]); //updates bow damage after obtaining upgrade
                return true;
             }
          }
