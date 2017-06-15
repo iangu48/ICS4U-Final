@@ -19,7 +19,7 @@ public class Material extends Item {
         if (other instanceof Material) {
             return getItemCode() - other.getItemCode();
         } else {
-            return 1;
+            return  -1;
         }
     }
 
