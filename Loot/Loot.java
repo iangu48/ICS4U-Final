@@ -61,7 +61,7 @@ public class Loot {
    public void add(Item other) {
       boolean added = false;
       for (int i = 0; i < items.length && !added; i++) {
-         if (items[i].addItem(other)) {
+         if (items[i] != null && items[i].addItem(other)) {
             added = true;
          }
       }
