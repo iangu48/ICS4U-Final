@@ -124,7 +124,7 @@ public class Room {
     }
 
     public static boolean buildTrap() {
-        Item traps = inventory.findItemById(GameMechanics.TrapID);
+        Item traps = inventory.findItemById(GameMechanics.TRAPID);
         if (traps == null || traps.getAmount() < 10) {
             Resource expense = new Resource(GameMechanics.trapCost[0]);
             if (inventory.addResources(expense)) {
