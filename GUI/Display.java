@@ -1,63 +1,77 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+	File Name:	 Display.java
+	Name:			 Shawn Wang
+	Class:		 ICS4U1
+	Date:			 June 15, 2017
+	Description: Blank template for GUI panels. Draws background black. Allows for implementation or direct usage of this class.
+*/
+
 package Game.GUI;
 
+// importing needed classes
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
-/**
- *
- * @author shawn
- */
 public class Display extends JPanel {
 
-    private static boolean switchedLighting = false;
-    protected static Color backgroundColor = Color.BLACK;
-    protected static Color textColor = Color.WHITE;
-    protected final static int TEXTSPACING = 25;
-    protected final static int LINESPACING = 15;
+   // colors:
+   private static boolean switchedLighting = false;   // if the colors are inversed (not implemented)
+   protected static Color backgroundColor = Color.BLACK; // background color ()
+   protected static Color textColor = Color.WHITE;
+   
+   // text distances: 
+   protected final static int TEXTSPACING = 25;
+   protected final static int LINESPACING = 15;
+   
+   // sizes:
+   private int width;
+   private int height;
 
-    int width;
-    int height;
+   //constructor
+   public Display(int width, int height) {
+      this.width = width;
+      this.height = height;
+      setSize(width, height);
+   }
 
-    public Display(int width, int height) {
-        this.width = width;
-        this.height = height;
-        setSize(width, height);
-    }
+   // returns state of inversed colors
+   public static boolean getLighting() {
+      return switchedLighting;
+   }
 
-    public static boolean getLighting() {
-        return switchedLighting;
-    }
+   // inverses colors
+   public static void lights() {
+      if (backgroundColor.equals(Color.BLACK)) {
+         backgroundColor = Color.DARK_GRAY;
+      } 
+      else {
+         backgroundColor = Color.BLACK;
+      }
+      switchedLighting = true;
+   }
 
-    public static void lights() {
-        if (backgroundColor.equals(Color.BLACK)) {
-            backgroundColor = Color.DARK_GRAY;
-        } else {
-            backgroundColor = Color.BLACK;
-        }
-        switchedLighting = true;
-    }
+   // paints the components of a display: background and contents
+   // calls paintBackground and paintContents method
+   public void paintComponent(Graphics g) {
+      super.paintComponent(g);
+      paintBackground(g);
+      paintContents(g);
+   }
+   
+   
+   // paints the background black
+   public void paintBackground(Graphics g) {
+      Graphics2D g2d = (Graphics2D) g;
+      g2d.setColor(backgroundColor);
+      g2d.fillRect(0, 0, width, height);
+   }
 
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        paintBackground(g);
-        paintContents(g);
-    }
-
-    public void paintBackground(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(backgroundColor);
-        g2d.fillRect(0, 0, width, height);
-    }
-
-    public void paintContents(Graphics g) {
-
-    }
+   // paints the contents of a display
+   // overwritten by implementaions if needed
+   public void paintContents(Graphics g) {
+   
+   }
 
 }

@@ -1,21 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+	File Name:	 GameRunner.java
+	Name:			 Shawn Wang
+	Class:		 ICS4U1
+	Date:			 June 15, 2017
+	Description: Starts the game file and allows the user to play "The dark room."
+*/
+
 package Game;
 
-/**
- *
- * @author shawn
- */
 public class GameRunner {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        new Game();
-    }
+   public static void main(String[] args) {
+   
+      new Game(); //Generates an instance of the game
+       
+   }//main method
 
-}
+}//GameRunner class
