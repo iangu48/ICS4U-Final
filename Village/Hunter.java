@@ -12,10 +12,12 @@ import Game.GameMechanics.GameMechanics;
 import Game.Room.*;
 
 public class Hunter extends Workers {
-
+	
+    //Constants
     public static final Material PLUSMEAT = new Material(GameMechanics.MEATID, GameMechanics.HUNTERMEAT);
     public static final Material PLUSFUR = new Material(GameMechanics.FURID, GameMechanics.HUNTERFUR);
-
+    
+    //Returns final resources of each type
     public Resource gatherResources() {
         int workers = getNumWorkers();
         Item[] items = {new Material(PLUSMEAT, PLUSMEAT.getAmount() * workers), new Material(PLUSFUR, PLUSFUR.getAmount() * workers)};
@@ -26,6 +28,8 @@ public class Hunter extends Workers {
         return "Hunter";
     }
     
+	
+    //Returns types of resources that gatherResources gives
     public Resource getUnitResource()
     {
         Item[] items = {new Material(PLUSMEAT), new Material(PLUSFUR)};
