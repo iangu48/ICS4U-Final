@@ -1,6 +1,6 @@
 /*
 Class Name: Room.java
-Author: Raghav
+Author: Raghav Srinvasan
 Date: June 15, 2017
 School: AY Jackson SS
 Purpose: For the user to manage game resources when not on expeditions, and to upgrade and
