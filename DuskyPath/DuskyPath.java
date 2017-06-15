@@ -1,7 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+   Name: DuskyPath.java
+   Author: Raghav and Michael
+   Date: June 15, 2017
+   School: AY Jackson SS
+   Purpose: This class is to manage all the encounters that the player faces and to
+            be the class that manages the "exploration" aspect of expeditions.
+   
  */
 package Game.DuskyPath;
 
@@ -152,6 +156,10 @@ public class DuskyPath {
       }
    }
 
+   /*
+    encounterEnemy Purpose: To randomly generage enemies for the player to encounter.
+    
+   */
    public String encounterEnemy() //execute when player runs into a monster
    {
       Enemy monster = enemies[(int) (Math.random() * (enemies.length - 1))]; //generate enemies to return to Events so they can use
