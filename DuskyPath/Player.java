@@ -1,8 +1,8 @@
 /*
 	File Name:	 Player.java
-	Name:			 Tongli Han, Shawn Wang(GUI/editing)
+	Name:		 Tong Li Han, Shawn Wang(GUI/editing)
 	Class:		 ICS4U1
-	Date:			 June 15, 2017
+	Date:		 June 15, 2017
 	Description: Keeps track of player values: current / max: health / water / storage.
                 Keeps track of player's inventory and strongest weapon.
                 Controls player's attack, attacked, and heal methods.

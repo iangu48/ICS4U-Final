@@ -23,6 +23,7 @@ public class Room {
         waterLevel = water;
     }
 
+    //All the accessor methods:
     public static int getArmorLevel() {
         return armorLevel;
     }
@@ -50,25 +51,32 @@ public class Room {
     public static int getMaxStorage() {
         return GameMechanics.CAPACITY[armorLevel];
     }
-
+    
+    public static Resource getInventory() {
+        return inventory;
+    }
+    
+    //This method is to manipulate the contents of the player's inventory, and it returns a boolean to show if this change was successful or not:
     public static boolean changeResources(Resource other) {
         return inventory.addResources(other);
     }
-
+    
+    //This method also manipulates the contents of the inventory, but is to take in a loot instead to add to inventory
+    //Returns a boolean to show if change is successfull or not
     public static boolean changeResources(Loot loot) {
         Resource resource = new Resource(loot);
         return changeResources(resource);
     }
 
-    public static Resource getInventory() {
-        return inventory;
-    }
-
+    //This method allows the player to manually gather wood to add to inventory
+    //This is called by the button in the game that says "gather wood"
     public static void gatherWood() {
         Item wood = GameMechanics.WOOD.drop();
         inventory.addItem(wood);
     }
 
+     //This method allows the player to gain resources from the traps they build
+     //It is called by the button in the game that says "check trap"
     public static void checkTrap() {
         Item trap = inventory.findItemById(GameMechanics.TRAPID);
 		  
@@ -79,7 +87,7 @@ public class Room {
             numTraps = trap.getAmount();
         }
 		  
-		  Item bait = inventory.findItemById(GameMechanics.BAITID);
+        Item bait = inventory.findItemById(GameMechanics.BAITID);
 		  
         int numBait;
         if (bait == null) {
@@ -89,32 +97,34 @@ public class Room {
         }
 
         for (int i = 0; i < numTraps; i++) {
+	    //gets drops from trap
             Item meat = GameMechanics.MEAT.drop();
             Item scales = GameMechanics.SCALES.drop();
             Item teeth = GameMechanics.TEETH.drop();
 				
-				Item[] gains = {meat, scales, teeth};
-				
-				if (numBait > 0)
-				{
-					numBait--;
-					for (int j = 0; j < gains.length; j++)
-					{
-						Item temp = gains[j];
-						if (temp != null)
-						{
-							temp.setAmount(temp.getAmount() * 2);
-						}
-					}
-				}
-            Resource obtained = new Resource(gains);
+	    Item[] gains = {meat, scales, teeth};
+			
+	     //bait increases trap gains:
+	    if (numBait > 0)
+	    {
+		numBait--;
+		for (int j = 0; j < gains.length; j++)
+		{
+		    Item temp = gains[j];
+		    if (temp != null)
+		    {
+			temp.setAmount(temp.getAmount() * 2); //bait doubles gains
+		    }
+	     }
+	}
+         Resource obtained = new Resource(gains);
 
-            inventory.combineResources(obtained);
+            inventory.combineResources(obtained); //add new gains to inventory
         }
     }
 
     public static boolean buildTrap() {
-        Item traps = inventory.findItemById(14);
+        Item traps = inventory.findItemById(GameMechanics.TrapID);
         if (traps == null || traps.getAmount() < 10) {
             Resource expense = new Resource(GameMechanics.trapCost[0]);
             if (inventory.addResources(expense)) {
