@@ -311,18 +311,20 @@
           public void actionPerformed(ActionEvent e) {
             String s = e.getActionCommand();
             if (s.equals("Start exploration")) {
-               lootWindow.dispose();
-               store.sortLoot();
-               Item temp = store.getLoot(0);
-               if (temp instanceof Weapon)
-            		strongestWep = temp;
-               startExploration();
-            } 
-            else if (s.equals("OK")) {
-               store.sortLoot();
-               lootWindow.dispose();
-					DuskyPath.winFight();
-            }
+            	lootWindow.dispose();
+            	store.updateArray();
+            	Item temp = store.getLoot(0);
+            	if (temp instanceof Weapon)
+               	strongestWep = temp;
+         	} 
+         	else if (s.equals("OK")) {
+           	  store.updateArray();
+           	  Item temp = store.getLoot(0);
+           	  if (temp instanceof Weapon)
+               		strongestWep = temp;
+		  lootWindow.dispose();
+            	  DuskyPath.winFight();
+		}
          }
       }
    
