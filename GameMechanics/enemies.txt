@@ -85,9 +85,9 @@ Huge Lizard
 0.8
 The grass thrashes wildly as a huge lizard pushes through. The huge lizard attacks you - it's dangerous cause it's huge
 
-100
+50
 The Ragman
-15
+6
 2
 2
 5
@@ -99,9 +99,9 @@ The Ragman
 0.3
 You encounter a wild Raghav, also known as a Ragman. It is super awesome.
 
-150
+75
 The Shawn
-20
+5
 2
 12
 0
@@ -113,9 +113,9 @@ The Shawn
 0.1
 You encounter a wild Game Developer - it happens to be a Shawn.
 
-75
+50
 The Tong Li
-10
+7
 1
 11
 0
@@ -123,9 +123,9 @@ The Tong Li
 0.5
 You encounter the Wild Tong Li - he really wants to do some Math problems.
 
-101
+75
 The Michael
-11
+7
 2
 6
 5
@@ -137,9 +137,9 @@ The Michael
 0.6
 Out over yonder in the wilderness, you see a Michael eating some meat.
 
-120
+60
 The Ian
-13
+5
 3
 4
 1
@@ -155,9 +155,9 @@ The Ian
 1
 The Ian appears playing some league...you can still taste the salty tears of a gold player.
 
-150
+100
 Ms Lam
-17
+10
 2
 12
 0
