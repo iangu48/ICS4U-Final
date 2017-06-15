@@ -1,3 +1,13 @@
+/*
+Class Name: Room.java
+Author: Raghav
+Date: June 15, 2017
+School: AY Jackson SS
+Purpose: For the user to manage game resources when not on expeditions, and to upgrade and
+	 build items. 
+*/
+
+
 package Game.Room;
 
 import Game.Game;
@@ -123,11 +133,13 @@ public class Room {
         }
     }
 
+    //builds a trap item and adds it to player inventory
+    //returns a boolean to see if the player actually successfully builds item
     public static boolean buildTrap() {
         Item traps = inventory.findItemById(GameMechanics.TRAPID);
-        if (traps == null || traps.getAmount() < 10) {
+        if (traps == null || traps.getAmount() < 10) { //there is a limit on number of traps the player can own
             Resource expense = new Resource(GameMechanics.trapCost[0]);
-            if (inventory.addResources(expense)) {
+            if (inventory.addResources(expense)) { //checks if player can actually afford item
                 Item copy = new Material(GameMechanics.trap);
                 inventory.addItem(copy);
                 return true;
@@ -136,6 +148,8 @@ public class Room {
         return false;
     }
 
+    //upgrades the armour for the player
+    //returns a boolean for if this upgrade is successful
     public static boolean upgradeArmor(int level) {
         if (level > armorLevel && level <= MAXLEVEL) {
             if (inventory.addResources(GameMechanics.armorUpgrades[level - 1])) {
