@@ -1,7 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+    ICS4U
+    Michael Chang
+    6/15/2017
+    A.Y. Jackson S.S.
+    
+    This class creates and initializes a fight between a given enemy and player
  */
 package Game.DuskyPath;
 
@@ -18,9 +21,9 @@ import Game.Room.*;
 
 public class Fight {
 
-    private int MEATHEAL = 8; //WHAT DOES IT HEAL
-    private Player player;
-    private Enemy enemy;
+    private int MEATHEAL = 8; //Healing
+    private Player player; //Player in fight
+    private Enemy enemy; //Enemy in Fight
     private JFrame fightWindow;
 
     private class FightDisplay extends Display {
@@ -131,7 +134,7 @@ public class Fight {
         fightWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fightWindow.setVisible(true);
     }
-
+    // Consume meat and heal player
     private void consumeMeat() {
         Item temp = player.getInventory().getLoot(new Material(GameMechanics.COOKEDMEATID, 0));
         if (temp != null && temp.deduct(1))
@@ -140,12 +143,12 @@ public class Fight {
             enemyFight();
         }
     }
-
+    //Player attacks enemy and triggers enemy to fight back
     private void playerFight() {
         player.attack(enemy);
         enemyFight();
     }
-
+    //Enemy attacks Player
     private void enemyFight() {
         enemy.attack(player);
     }
