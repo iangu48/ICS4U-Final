@@ -114,11 +114,14 @@ public class Loot {
     }
 
     public void sortLoot() {
-        for (int i = 0; i < items.length; i++) {
-            for (int j = i; j < items.length - 1; j++) {
-                if (items[j].compareTo(items[j + 1]) > 0) {
-                    Item temp = items[j + 1];
-                    items[j + 1] = items[j];
+        boolean sorted = false;
+        for (int i = 0; i < items.length && !sorted; i++) {
+            sorted = true;
+            for (int j = items.length - 1; j > i; j--) {
+                if (items[j].compareTo(items[j - 1]) > 0) {
+                    sorted = false;
+                    Item temp = items[j - 1];
+                    items[j - 1] = items[j];
                     items[j] = temp;
                 }
             }
