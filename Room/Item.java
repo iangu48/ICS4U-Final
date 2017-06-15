@@ -52,7 +52,7 @@ public abstract class Item {
     }
 
     public boolean addItem(Item other) {
-        if (equals(other)) {
+        if (this != other && equals(other)) {
             this.amount += other.amount;
             other.amount = 0;
             return true;
