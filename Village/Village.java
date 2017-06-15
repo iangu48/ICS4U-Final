@@ -1,3 +1,12 @@
+/*
+	ICS4U
+	Ian Gu
+	6/2/2017
+	AY Jackson SS
+	
+	This class keeps track of the "village" of the game,
+	which includes all the villagers, and their jobs
+ */
 package Game.Village;
 
 import Game.Room.Resource;
