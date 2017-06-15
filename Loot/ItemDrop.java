@@ -1,6 +1,6 @@
 /*
 Class Name: ItemDrop
-Authors: Michael and Raghav
+Authors: Michael Chang and Raghav Srinvasan
 Date: June 15, 2017
 School: AY Jackson SS
 Purpose: To package together loot chances and items into one object, to randomly generate items for the player while
