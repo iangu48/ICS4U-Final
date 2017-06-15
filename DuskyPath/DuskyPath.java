@@ -158,7 +158,7 @@ public class DuskyPath {
 
    /*
     encounterEnemy Purpose: To randomly generage enemies for the player to encounter.
-    
+    Return values: This method returns a string to display what monster they actually encounter
    */
    public String encounterEnemy() //execute when player runs into a monster
    {
