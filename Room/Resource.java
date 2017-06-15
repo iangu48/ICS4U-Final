@@ -144,7 +144,7 @@
         for (int i = 0; i < items.length && !sorted; i++) {
             sorted = true;
             for (int j = items.length - 1; j > i; j--) {
-                if (items[j].compareTo(items[j - 1]) > 0) {
+                if (items[j].getItemCode() < items[j - 1].getItemCode()) {
                     sorted = false;
                     Item temp = items[j - 1];
                     items[j - 1] = items[j];
