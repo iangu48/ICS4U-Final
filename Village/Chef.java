@@ -13,10 +13,12 @@ import Game.Room.*;
 
 public class Chef extends Workers {
 
+    //constants
     public static final Material PLUSCOOKEDMEAT = new Material(GameMechanics.COOKEDMEATID, GameMechanics.CHEFCOOKEDMEAT);
     public static final Material MINUSWOOD = new Material(GameMechanics.WOODID, GameMechanics.CHEFWOOD);
     public static final Material MINUSMEAT = new Material(GameMechanics.MEATID, GameMechanics.CHEFMEAT);
 
+    //Returns final resources of each type
     public Resource gatherResources() {
         int workers = getNumWorkers();
         Item[] items = {new Material(MINUSWOOD, MINUSWOOD.getAmount() * workers), new Material(MINUSMEAT, MINUSMEAT.getAmount() * workers), new Material(PLUSCOOKEDMEAT, PLUSCOOKEDMEAT.getAmount() * workers)};
@@ -27,6 +29,7 @@ public class Chef extends Workers {
         return "Chef";
     }
     
+    //Returns types of resources that gatherResources gives
     public Resource getUnitResource()
     {
         Item[] items = {new Material(PLUSCOOKEDMEAT), new Material(MINUSWOOD), new Material(MINUSMEAT)};
