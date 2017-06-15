@@ -1,11 +1,11 @@
 /*
-	File Name:	 Enemy.java
-	Name:			 Tongli Han
-	Class:		 ICS4U1
-	Date:			 June 15, 2017
-	Description: Keeps track of enemy values: current / max: health / damage.
-                Controls enemy's attack, attacked methods.
-                Controls over loop drops after defeated.
+	File Name:	Enemy.java
+	Name:		Tong Li Han
+	Class:		ICS4U1
+	Date:		June 15, 2017
+	Description: 	Keeps track of enemy values: current / max: health / damage.
+               		Controls enemy's attack, attacked methods.
+                	Controls over loop drops after defeated.
 */
 
 
