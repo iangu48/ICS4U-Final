@@ -1,3 +1,12 @@
+/*
+Class Name: Room.java
+Author: Raghav
+Date: June 15, 2017
+School: AY Jackson SS
+Purpose: For the user to manage game resources when not on expeditions, and to upgrade and
+	 build items. 
+*/
+
 package Game.Room;
 
 import Game.Game;
@@ -165,24 +174,33 @@ public class Room {
     }
 
     public static boolean buildBow() {
-        if (inventory.addResources(GameMechanics.bowCost[0])) {
-            inventory.addItem(GameMechanics.compoundBow);
-            arrowLevel = 0;
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean upgradeArrows(int level) {
-        if (arrowLevel > -1 && level > arrowLevel && level < MAXLEVEL) {
-            if (inventory.addResources(GameMechanics.arrowUpgrades[level - 1])) {
-                arrowLevel = level;
-                Weapon bow = (Weapon)inventory.findItemById(GameMechanics.BOWID);
-                bow.setStrength(bow.getStrength() + GameMechanics.ARROWDAMAGE[level - 1]);
-                return true;
+         if (inventory.addResources(GameMechanics.bowCost[0])) {
+            Weapon bow = new Weapon(GameMechanics.compoundBow, 1);
+            if (arrowLevel < 0)
+            {
+               bow.setStrength(0);
+               arrowLevel = -1;
             }
-        }
-        return false;
-    }
+            else
+            {
+               bow.setStrength(GameMechanics.BOWDAMAGE + GameMechanics.ARROWDAMAGE[arrowLevel]);
+            }
+            return true;
+         }
+         return false;
+      }
+   
+       public static boolean upgradeArrows(int level) {
+         if (arrowLevel > -2 && level > arrowLevel && level < MAXLEVEL) {
+            if (inventory.addResources(GameMechanics.arrowUpgrades[level - 1])) {
+               Weapon bow = (Weapon)inventory.findItemById(GameMechanics.BOWID);
+               arrowLevel = level;
+               bow.setStrength(GameMechanics.BOWDAMAGE + GameMechanics.ARROWDAMAGE[level]);
+               return true;
+            }
+         }
+         return false;
+      }
+
 
 }

@@ -1,4 +1,13 @@
-   package Game.Room;
+/*
+	ICS4U
+	Ian Gu
+	6/2/2017
+	AY Jackson SS
+	
+	This class is a subclass of item, representing
+	the healing items of the game
+ */   
+package Game.Room;
 
     public class Healing extends Item{
    
