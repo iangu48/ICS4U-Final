@@ -776,72 +776,83 @@
       }
    
        public static void load() {
-         try {
-            File profile = new File("Game\\saves\\" + username + ".txt");
-            if (profile.exists()) {
-               try {
-                  FileReader in = new FileReader(profile);
-                  BufferedReader reader = new BufferedReader(in);
-                  reader.readLine();
-                  Item[] items = new Item[0];
-                  int amount;
-                  for (int i = 0; i < GameMechanics.COOKEDMEATID; i++) {
-                     amount = Cipher.decryptToInt(reader.readLine());
-                     if (amount > 0) {
-                        items = Arrays.copyOf(items, items.length + 1);
-                        items[items.length - 1] = new Material(i, amount);
-                     }
-                  }
+        try {
+         File profile = new File("Game\\saves\\" + username + ".txt");
+         if (profile.exists()) {
+            try {
+               FileReader in = new FileReader(profile);
+               BufferedReader reader = new BufferedReader(in);
+               reader.readLine();
+               Item[] items = new Item[0];
+               int amount;
+               for (int i = 0; i < GameMechanics.COOKEDMEATID; i++) {
                   amount = Cipher.decryptToInt(reader.readLine());
                   if (amount > 0) {
                      items = Arrays.copyOf(items, items.length + 1);
-                     items[items.length - 1] = new Healing(GameMechanics.COOKEDMEATID, amount, 8);
+                     items[items.length - 1] = new Material(i, amount);
                   }
+               }
+               amount = Cipher.decryptToInt(reader.readLine());
+               if (amount > 0) {
+                  items = Arrays.copyOf(items, items.length + 1);
+                  items[items.length - 1] = new Healing(GameMechanics.COOKEDMEATID, amount, 8);
+               }
+               amount = Cipher.decryptToInt(reader.readLine());
+               if (amount > 0) {
+                  items = Arrays.copyOf(items, items.length + 1);
+                  items[items.length - 1] = new Material(GameMechanics.BAITID, amount);
+               }
+               for (int i = GameMechanics.WOODSWORDID; i <= GameMechanics.STEELSWORDID; i++) {
                   amount = Cipher.decryptToInt(reader.readLine());
                   if (amount > 0) {
                      items = Arrays.copyOf(items, items.length + 1);
-                     items[items.length - 1] = new Material(GameMechanics.BAITID, amount);
+                     items[items.length - 1] = new Weapon(GameMechanics.swords[i - GameMechanics.WOODSWORDID + 1], amount);
                   }
-                  for (int i = GameMechanics.WOODSWORDID; i <= GameMechanics.TRAPID; i++) {
-                     amount = Cipher.decryptToInt(reader.readLine());
-                     if (amount > 0) {
-                        items = Arrays.copyOf(items, items.length + 1);
-                        items[items.length - 1] = new Material(i, amount);
-                     }
-                  }
-                  Resource inventory = new Resource(items);
-                  int[] workers = new int[Village.length()];
-                  for (int i = 0; i < Village.length(); i++) {
-                     workers[i] = Cipher.decryptToInt(reader.readLine());
-                  }
-               
-                  int armor = Cipher.decryptToInt(reader.readLine());
-                  int storage = Cipher.decryptToInt(reader.readLine());
-                  int arrow = Cipher.decryptToInt(reader.readLine());
-                  int water = Cipher.decryptToInt(reader.readLine());
-               
-                  boolean lighting = Cipher.decryptToBoolean(reader.readLine());
-               
-                  Room.load(inventory, armor, storage, arrow, water);
-                  Village.load(workers);
-                  if (lighting) {
-                     Display.lights();
-                  }
-                  reader.close();
-                  in.close();
-               
-               } 
-                   catch (IOException exception) {
-                     System.out.println(exception.getMessage());
-                  }
+               }
+               amount = Cipher.decryptToInt(reader.readLine());
+               if (amount > 0) {
+                  items = Arrays.copyOf(items, items.length + 1);
+                  items[items.length - 1] = new Weapon(GameMechanics.compoundBow, amount);
+               }
+               amount = Cipher.decryptToInt(reader.readLine());
+               if (amount > 0) {
+                  items = Arrays.copyOf(items, items.length + 1);
+                  items[items.length - 1] = new Material(GameMechanics.BAITID, amount);
+               }
+            
+               Resource inventory = new Resource(items);
+               int[] workers = new int[Village.length()];
+               for (int i = 0; i < Village.length(); i++) {
+                  workers[i] = Cipher.decryptToInt(reader.readLine());
+               }
+            
+               int armor = Cipher.decryptToInt(reader.readLine());
+               int storage = Cipher.decryptToInt(reader.readLine());
+               int arrow = Cipher.decryptToInt(reader.readLine());
+               int water = Cipher.decryptToInt(reader.readLine());
+            
+               boolean lighting = Cipher.decryptToBoolean(reader.readLine());
+            
+               Room.load(inventory, armor, storage, arrow, water);
+               Village.load(workers);
+               if (lighting) {
+                  Display.lights();
+               }
+               reader.close();
+               in.close();
+            
             } 
-            else {
-               usernameField.setText("Error. Profile does not exist.");
+            catch (IOException exception) {
+               System.out.println(exception.getMessage());
             }
          } 
-             catch (NumberFormatException e) {
-            
-            }
+         else {
+            usernameField.setText("Error. Profile does not exist.");
+         }
+      } 
+      catch (NumberFormatException e) {
+         
+      }
       }
    
        public Game() {
