@@ -51,10 +51,12 @@ public abstract class Item {
 
    public abstract int compareTo(Item other);
 
+   //compares itemCode of implicit and explicit 
    public boolean equals(Item other) {
       return other != null && itemCode == other.itemCode;
    }
 
+   //increases the amount of the implicit item and sets amount of explicit item to 0 if itemcodes are the same
    public boolean addItem(Item other) {
       if (this == other)
          return true;
