@@ -1,3 +1,12 @@
+/*
+	Random Generation
+	Class: ICS4U1
+	Author: Michael Chang
+	Date: May 31 2017
+	School: A.Y. Jackson S.S.
+	Purpose: Random Number generation and boolean based on chance double
+*/
+
 package Game.Loot;
 
 import java.util.Random; //Import random
