@@ -1,12 +1,4 @@
-/*
-   Name: DuskyPath.java
-   Author: Raghav and Michael
-   Date: June 15, 2017
-   School: AY Jackson SS
-   Purpose: This class is to manage all the encounters that the player faces and to
-            be the class that manages the "exploration" aspect of expeditions.
-   
- */
+
 package Game.DuskyPath;
 
 import Game.Game;
