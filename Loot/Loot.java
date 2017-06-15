@@ -1,31 +1,41 @@
+/*
+	File Name:	 Loot.java
+	Name:			 Tong Li Han
+	Class:		 ICS4U1
+	Date:			 June 15, 2017
+	Description: Represents an array of items in the dusky path, used by enemies, loot drops, and player. 
+                Organizes the items owned by said entity.
+               
+*/
 package Game.Loot;
 
+//import needed classes
 import java.util.Arrays;
 import Game.Room.*;
 
 public class Loot {
 
    private Item[] items;
-
+   //Referencing Constructor 1
    public Loot(Item[] other) {
       items = other;
    }
-
+   //Initialzing Constructor
    public Loot(int i) {
       items = new Item[i];
    }
-
+   //Referencing Constructor 2
    public Loot(Resource resource) {
       items = resource.getItems();
    }
-
+   //returns item in the array with i index
    public Item getLoot(int i) {
       if (i >= 0 && i < length()) {
          return items[i];
       }
       return null;
    }
-
+   //returns item in array by comparing id
    public Item getLoot(Item item) {
       for (int i = 0; i < items.length; i++) {
          if (items[i] != null && items[i].equals(item)) {
@@ -34,20 +44,20 @@ public class Loot {
       }
       return null;
    }
-   
+   //Accessor
    public Item[] getItems()
    {
       return items;
    }
-
+   //Mutator
    public void setLoot(int i, Item other) {
       items[i] = other;
    }
-
+   //returns length of array
    public int length() {
       return items.length;
    }
-
+   //return item that is taken from inventory
    public Item take(Item item) {
       for (int i = 0; i < items.length; i++) {
          if (item.equals(items[i])) {
@@ -57,7 +67,7 @@ public class Loot {
       }
       return null;
    }
-
+   //add item to array
    public void add(Item other) {
       boolean added = false;
       for (int i = 0; i < items.length && !added; i++) {
@@ -70,7 +80,7 @@ public class Loot {
          items[items.length - 1] = other;
       }
    }
-
+   //increases array if necessary when item is not present in array
    public void updateArray() {
       int empty = 0;
       for (int i = 0; i < items.length; i++) {
@@ -84,7 +94,7 @@ public class Loot {
       items = Arrays.copyOf(items, items.length - empty);
       sortLoot();
    }
-
+   //returns inventory count
    public int totalInventory() {
       int count = 0;
       for (Item item : items) {
@@ -92,7 +102,7 @@ public class Loot {
       }
       return count;
    }
-
+   //merges two inventories
    public void addInventories(Loot other) {
       for (int i = 0; i < items.length; i++) {     //cycles through other Loot
          Item tempItem = other.getLoot(i); 			//store item into a temp variable
@@ -112,7 +122,7 @@ public class Loot {
       }
       updateArray();
    }
-
+   //sorts array
    public void sortLoot() {
       for (int i = 0; i < items.length; i++) {
          for (int j = 0; j < items.length - 1; j++) {
@@ -124,7 +134,7 @@ public class Loot {
          }
       }
    }
-   
+   //to String
    public String toString() {
       String s = "";
       for (int i = 0; i < items.length - 1; i++) {
