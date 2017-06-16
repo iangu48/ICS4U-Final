@@ -1397,7 +1397,7 @@
             amount = Cipher.decryptToInt(reader.readLine());
             if (amount > 0) {
                items = Arrays.copyOf(items, items.length + 1);
-               items[items.length - 1] = new Material(GameMechanics.BAITID, amount);
+               items[items.length - 1] = new Material(GameMechanics.TRAPID, amount);
             }
          
          // stores items
