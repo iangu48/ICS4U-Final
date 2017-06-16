@@ -61,9 +61,12 @@ public abstract class Item {
       if (this == other)
          return true;
       if (equals(other)) {
-         this.amount += other.amount;
-         other.amount = 0;
-         return true;
+         if (this.amount + other.amount >= 0) //account for negative values for the other item: for costs
+         {
+            this.amount += other.amount;
+            other.amount = 0;
+            return true;
+         }
       }
       return false;
    }
